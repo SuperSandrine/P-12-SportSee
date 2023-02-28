@@ -11,12 +11,12 @@ class FormatData extends React.Component {
       performance: props.USER_PERFORMANCE,
     }; // etat de notre interface
 
-    console.log('encore un truc', this.state.activity);
+    console.log('encore un truc', this.state.averageSession);
   }
 
   getDataForBarcharts(id) {
-    console.log('id dans getData', id);
-    console.log('state dans getData', this.state.activity);
+    //console.log('id dans getData', id);
+    //console.log('state dans getData', this.state.activity);
     const filteredData = this.state.activity.filter(
       (element) => element.userId == id
     );
@@ -26,6 +26,45 @@ class FormatData extends React.Component {
     //[{ name: 'a', value: 12 }]
     //[{ name: 'a', value: [5, 12] }]
     return filteredData[0].sessions;
+  }
+
+  getDataForLineChart(id) {
+    //console.log('id dans getData', id);
+    //console.log('state average dans getData', this.state.averageSession);
+    const filteredData2 = this.state.averageSession.filter(
+      (element) => element.userId == id
+    );
+    //console.log('filtration', filteredData2);
+    return filteredData2[0].sessions;
+  }
+
+  getDataForRadarChart(id) {
+    //console.log('id dans getData', id);
+    //console.log('state performance dans getData', this.state.performance);
+    const filteredData = this.state.performance.filter(
+      (element) => element.userId == id
+    );
+    //console.log('filtration', filteredData[0].data);
+    return filteredData[0];
+  }
+
+  getDataForCards(id) {
+    //console.log('id dans getData', id);
+    //console.log('state mainData dans getData', this.state.mainData);
+    const filteredData = this.state.mainData.filter(
+      (element) => element.id == id
+    );
+    //console.log('filtration mainData', filteredData[0].keyData);
+    const mainDataFiltered = filteredData[0].keyData;
+    let mainDataFilteredRestructured = [];
+    //avec destructuration
+    Object.entries(mainDataFiltered).forEach(([name, value]) => {
+      mainDataFilteredRestructured.push({ name, value });
+    });
+    console.log('mainDataFilteredRestructured', mainDataFilteredRestructured);
+
+    // return filteredData[0].keyData;
+    return mainDataFilteredRestructured;
   }
 
   render() {

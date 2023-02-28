@@ -13,7 +13,7 @@ import { Bar } from 'recharts';
 import { Label } from 'recharts'; // à quoi sert label, TODO, utile pour titre?
 
 const DailyActivities = (props) => {
-  console.log('props dans DailyActivities', props);
+  //console.log('props dans DailyActivities', props);
   return (
     // <figure>
     //   <h2>Activité quotidienne</h2>
@@ -77,6 +77,7 @@ const DailyActivities = (props) => {
           color: 'blue',
           border: 'none',
           textDecoration: 'none',
+          outline: 'none', // TODO: ça a marché 2 secondes... étrange
         }}
         itemStyle={{ color: 'white', fontSize: 14 }}
         label=""
