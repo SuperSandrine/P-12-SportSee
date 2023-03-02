@@ -1,4 +1,5 @@
 import React from 'react';
+import { ResponsiveContainer } from 'recharts';
 import styled from 'styled-components';
 
 // donnée dans main data/index/keydata
@@ -8,12 +9,15 @@ import fatIcon from './../../assets/iconfat.svg';
 import proteinIcon from './../../assets/iconprotein.svg';
 
 const StyledDiv = styled.div`
-  row-gap: 39px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
   figure {
     display: flex;
-    width: 258px;
+    width: 17.92vw;
     background-color: #fbfbfb;
-    padding: 32px;
+    padding: 2.22vw;
     border-radius: 5px;
     article {
       padding-left: 24px;

@@ -29,13 +29,15 @@ class FormatData extends React.Component {
   }
 
   getDataForLineChart(id) {
+    const { averageSession } = this.state;
     //console.log('id dans getData', id);
     //console.log('state average dans getData', this.state.averageSession);
-    const filteredData2 = this.state.averageSession.filter(
+    const filteredData2 = averageSession.filter(
       (element) => element.userId == id
     );
+    const { sessions } = filteredData2[0];
     //console.log('filtration', filteredData2);
-    return filteredData2[0].sessions;
+    return sessions;
   }
 
   getDataForRadarChart(id) {

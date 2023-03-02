@@ -2,6 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import logo from './../../assets/sportsee-logo.svg';
+import yogi from './../../assets/Groupyogi.svg';
+import ride from './../../assets/Vectorride.svg';
+import swim from './../../assets/Vectorswim.svg';
+import work from './../../assets/Vectorwork.svg';
 
 const StyledNav = styled.nav`
   display: flex;
@@ -20,16 +24,41 @@ const StyledLink = styled(Link)`
 `;
 const StyledVerticalUl = styled.ul`
   width: 117px;
-  height: calc(100vh - 99px);
+  height: calc(100vh - 90px);
+  display: flex;
   display: flex;
   flex-direction: column;
   background-color: black;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   position: absolute;
   top: 90px;
   left: 0;
+  li {
+    ul {
+      display: flex;
+      flex-direction: column;
+      row-gap: 20px;
+    }
+  }
 `;
+
+const ButtonVerticalNavBar = (props) => {
+  return (
+    <li>
+      <button
+        style={{
+          width: '64px',
+          height: '64px',
+          background: 'white',
+          borderRadius: '6px',
+        }}
+      >
+        <img src={props.picture} />
+      </button>
+    </li>
+  );
+};
 
 const Navbar = () => {
   return (
@@ -45,17 +74,14 @@ const Navbar = () => {
       </StyledNav>
       <StyledVerticalUl>
         <li>
-          <button>Yogi</button>
+          <ul>
+            <ButtonVerticalNavBar picture={yogi} alt="yoga " />
+            <ButtonVerticalNavBar picture={swim} alt="natation" />
+            <ButtonVerticalNavBar picture={ride} alt="vélo" />
+            <ButtonVerticalNavBar picture={work} alt="workout" />
+          </ul>
         </li>
-        <li>
-          <button>Swim</button>
-        </li>
-        <li>
-          <button>Ride</button>
-        </li>
-        <li>
-          <button>Work</button>
-        </li>
+
         <li>
           <p
             style={{

@@ -12,8 +12,8 @@ import Score from '../../Components/Score/Score';
 import DietCount from '../../Components/DietCount/DietCount';
 
 const StyledMain = styled.main`
-  padding-left: 248px;
-  padding-top: 68px;
+  padding-left: 15.5vw;
+  padding-top: 6.4vh;
   h1 {
     font-size: 48px;
     span {
@@ -26,23 +26,23 @@ const StyledMain = styled.main`
     padding: 30px 0 70px 0;
   }
   .mainGraphs {
+    // width: 82.78vw;
     display: flex;
-    column-gap: 32px;
-    article {
+    column-gap: 2.22vw;
+    .mainGraphsBoxes {
+      width: 57.99vw;
       display: flex;
       flex-direction: column;
-      gap: 30px;
-      section {
+      gap: 3.12vh;
+      .mainGraphsBoxesSection {
+        width: 57.99vw;
         display: flex;
-        gap: 30px;
+        justify-content: space-between;
+        gap: 2.22vw;
       }
     }
     aside {
-      // changer l'endroit où est mis en page l'aside
-      div {
-        display: flex;
-        flex-direction: column;
-      }
+      display: flex;
     }
   }
 `;
@@ -50,7 +50,7 @@ const StyledMain = styled.main`
 const Dashboard = () => {
   console.log('data 1', DATA);
   console.log('data 2', DATA.USER_MAIN_DATA[0].userInfos.firstName);
-  const firstName = DATA.USER_MAIN_DATA[0].userInfos.firstName;
+  const firstName = DATA.USER_MAIN_DATA[0].userInfos.firstName; // TODO: ça c'est pas dynamique
 
   // trouver un moyen dynamique à cette id
   const id = 12;
@@ -58,20 +58,20 @@ const Dashboard = () => {
   // const filteredData = DATA.filter((array) => array.includes(id));
   // console.log('les data Filtrés', filteredData);
 
-  const test1 = new FormatData(DATA);
-  console.log('instanciation', test1);
-  const dailyActivitiesData = test1.getDataForBarcharts(id);
+  const format = new FormatData(DATA);
+  console.log('instanciation', format);
+  const dailyActivitiesData = format.getDataForBarcharts(id);
   console.log('methode1', dailyActivitiesData);
 
-  const averageSessionData = test1.getDataForLineChart(id);
+  const averageSessionData = format.getDataForLineChart(id);
   console.log('methode2', averageSessionData);
 
-  const webPerformanceData = test1.getDataForRadarChart(id);
+  const webPerformanceData = format.getDataForRadarChart(id);
   console.log('methode3', webPerformanceData);
 
   const scoreData = 12;
 
-  const dietCountData = test1.getDataForCards(id);
+  const dietCountData = format.getDataForCards(id);
   console.log('methode5', dietCountData);
 
   return (
@@ -85,9 +85,9 @@ const Dashboard = () => {
           Félicitations ! Vous avez explosé vos objectifs hier 👏
         </p>
         <div className="mainGraphs">
-          <article>
+          <article className="mainGraphsBoxes">
             <DailyActivities data={dailyActivitiesData} />
-            <section>
+            <section className="mainGraphsBoxesSection">
               <AverageSession data={averageSessionData} />
               <WebPerformance data={webPerformanceData} />
               <Score />
@@ -97,7 +97,7 @@ const Dashboard = () => {
             <DietCount data={dietCountData}></DietCount>
           </aside>
         </div>
-        <DataCalls name="Charlie" />
+        <DataCalls />
       </StyledMain>
     </div>
   );
