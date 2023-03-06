@@ -24,7 +24,7 @@ const StyledLink = styled(Link)`
 `;
 const StyledVerticalUl = styled.ul`
   width: 117px;
-  height: calc(100vh - 90px);
+  height: calc(100vh - 85px);
   display: flex;
   display: flex;
   flex-direction: column;
@@ -52,6 +52,7 @@ const ButtonVerticalNavBar = (props) => {
           height: '64px',
           background: 'white',
           borderRadius: '6px',
+          border: 'none',
         }}
       >
         <img src={props.picture} />
@@ -67,8 +68,8 @@ const Navbar = () => {
         <StyledLink to="/">
           <img src={logo} alt="logo de sportsee" />
         </StyledLink>
-        <StyledLink to="/dashboard">Accueil</StyledLink>
-        <StyledLink to="/workinprogress">Profil</StyledLink>
+        <StyledLink to="/">Accueil</StyledLink>
+        <StyledLink to="/profile">Profil</StyledLink>
         <StyledLink to="/workinprogress">Réglages</StyledLink>
         <StyledLink to="/workinprogress">Communauté</StyledLink>
       </StyledNav>
@@ -89,6 +90,7 @@ const Navbar = () => {
               transform: 'rotate(-90deg)',
               whiteSpace: 'nowrap',
               width: 'fit-content',
+              paddingBottom: '40px',
             }}
           >
             Copyright, SportSee 2020

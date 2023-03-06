@@ -1,17 +1,29 @@
 import React from 'react';
+import styled from 'styled-components';
+
 import DataCalls from '../../Data/DataCalls';
 import DATA from '../../../mockedData.js';
+import { useFetch } from '../../Data/GetData.jsx';
+
 import Navbar from '../../Components/Navbar/Navbar';
-import styled from 'styled-components';
-import { getMockedData } from '../../Data/GetData';
 import DailyActivities from '../../Components/DailyActivities/DailyActivities.jsx';
 import FormatData from '../../Data/FormatData';
 import AverageSession from '../../Components/AverageSession/AverageSession';
 import WebPerformance from '../../Components/WebPerformance/WebPerformance';
 import Score from '../../Components/Score/Score';
 import DietCount from '../../Components/DietCount/DietCount';
+import { useParams } from 'react-router-dom';
+//import { test } from 'vitest';
+//import { buildErrorMessage } from 'vite';
+//import { useLoaderData } from 'react-router-dom';
 
-const StyledMain = styled.main`
+//export async function loader() {
+//const test = new
+//const contacts = await getFirstNameFromData();
+//return { contacts };
+//}
+
+export const StyledMain = styled.main`
   padding-left: 15.5vw;
   padding-top: 6.4vh;
   h1 {
@@ -47,37 +59,206 @@ const StyledMain = styled.main`
   }
 `;
 
-const Dashboard = () => {
-  console.log('data 1', DATA);
-  console.log('data 2', DATA.USER_MAIN_DATA[0].userInfos.firstName);
-  const firstName = DATA.USER_MAIN_DATA[0].userInfos.firstName; // TODO: ça c'est pas dynamique
+// dashboard récupère le paramètre et la donnée mockée
+// ensuite affichage conditionnelle
+// TODO : sortir les fonction dans d'autres fichier pour n'avoir que l'affichage
+const Dashboard = (props) => {
+  const paramsId = useParams();
+  const userId = paramsId.id;
+  // const { contacts } = useLoaderData();
+  // console.log('contacts', contacts.lenght);
+
+  //console.log('USER-ID from params', userId); // 12
+  //console.log('dash props', props);
+  let firstName,
+    dailyActivitiesData,
+    averageSessionData,
+    webPerformanceData,
+    dietCountData,
+    scoreData;
+
+  if (props.mocked === true) {
+    console.log("****C'est bien mocké !!! ****");
+    console.log('data mockée', DATA);
+    const format = new FormatData(DATA);
+    firstName = format.getFirstNameFromData(userId);
+
+    //console.log('instanciation', format);
+    dailyActivitiesData = format.getDataForBarcharts(userId);
+    //console.log('methode1', dailyActivitiesData);
+
+    averageSessionData = format.getDataForLineChart(userId);
+    //console.log('methode2', averageSessionData);
+
+    webPerformanceData = format.getDataForRadarChart(userId);
+    //console.log('methode3', webPerformanceData);
+
+    scoreData = format.getDataForRadialChart(userId);
+    //console.log('méthode4', scoreData);
+
+    dietCountData = format.getDataForCards(userId);
+    //console.log('methode5', dietCountData);
+
+    //return DATA, firstName;
+  } else {
+    console.log("____C'est pas mocké !!! ____");
+    const [
+      mainData,
+      activityData,
+      averageSessionData,
+      performanceData,
+      error,
+      loading,
+    ] = useFetch(userId);
+
+    console.log('le fecth a t-il fonctionné avec activityData', activityData);
+    //const retrouverlesdata = async () => {
+    const azerty = new Object();
+    azerty.USER_MAIN_DATA = mainData;
+    azerty.USER_ACTIVITY = activityData;
+    azerty.USER_AVERAGE_SESSIONS = averageSessionData;
+    azerty.USER_PERFORMANCE = performanceData;
+    console.log('est-ce que j"ai mon nouvel objet avec ttes les data?', azerty);
+
+    const format = new FormatData(azerty);
+    // console.log(
+    //   'est)ce que il se passe qqchose quand jappelle la classe format',
+    //   format
+    // );
+    //firstName = format.getFirstNameFromData();
+    //console.log("est-ce que j'ai un prénom", firstName);
+
+    // const jetravaille = async () => {
+    //   const [
+    //     mainData,
+    //     activityData,
+    //     averageSessionData,
+    //     performanceData,
+    //     error,
+    //     loading,
+    //   ] = await useFetch(userId);
+
+    //   console.log('le fecth a t-il fonctionné avec activityData', activityData);
+    //   //const retrouverlesdata = async () => {
+    //   const azerty = new Object();
+    //   azerty.USER_MAIN_DATA = mainData;
+    //   azerty.USER_ACTIVITY = activityData;
+    //   azerty.USER_AVERAGE_SESSIONS = averageSessionData;
+    //   azerty.USER_PERFORMANCE = performanceData;
+    //   console.log(
+    //     'est-ce que j"ai mon nouvel objet avec ttes les data?',
+    //     azerty
+    //   );
+
+    //   const format = new FormatData(azerty);
+    //   console.log(
+    //     'est)ce que il se passe qqchose quand jappelle la classe format',
+    //     format
+    //   );
+    //   firstName = format.getFirstNameFromData();
+    //   console.log("est-ce que j'ai un prénom", firstName);
+    // };
+    // jetravaille();
+
+    //let prénom = retrouverlesdata();
+    //console.log('prénom qui es tu', prénom);
+
+    //const newDat = useFetch(userId);
+    //console.log('NewDat', newDat); //renvoit un tableau de 6 arrays mais vide
+
+    // ON DESTRUCTURE ET ON RECRÉE UN TABLEAU LES DATA POUR AVOI LE MÊME QUE LE MOCKED
+
+    // avec ça j'importe qu'un élement de la data
+    // est-ce que je dois écrire une autre fonction pour la traiter
+
+    // const newData = activityData;
+    // console.log('NEW DATA', newData);
+    //const format = new FormatData(azerty);
+
+    //const format = new FormatData(azerty);
+    //console.log('format pas mocké', format); // ya les props mais ya pas les states?
+    //firstName = 'blue';
+    //firstName = format.getFirstNameFromData(userId);
+    //console.log('firstname', firstName);
+
+    return (
+      <div>
+        {loading && <p>Loading ...</p>}
+        {error ? (
+          <p>Something went wrong</p>
+        ) : (
+          <div>
+            <p>ça marche !!!</p>
+            <h3>
+              Bonjour {userId}
+              <span>
+                {
+                  // const format = new FormatData(azerty)
+                  format.getFirstNameFromData()
+                  // firstName=format.getFirstNameFromData()
+                  // firstName
+                }
+              </span>
+              <br />
+              le barChart:
+              {
+                //format.getDataForBarcharts()
+              }
+              ;
+            </h3>
+          </div>
+        )}
+      </div>
+    );
+    //patienter pour recevoir les data
+  }
+
+  // comment afficher le dashboard à partir d'un mock et/ou d'un fetch
+  // si
+
+  // const [userData, error, loading] = useFetch('http://localhost:3000/user/18');
+  // console.log('DATAAAAAAA', userData); // correspond à UserMainData[0]
+  //console.log('Data comparaison acec data1', userData.data.score);//0.3
+  // problème d'asynchrone,TODO: gérer le temps de chargement
+  // if (userData) {
+  //   console.log(
+  //     'Data comparaison acec data1',
+  //     userData.data.userInfos.firstName
+  //   );
+  // }
+
+  //console.log('data 2', getData());
+  //const data3 = getData();
+  //console.log('data 3', data3);
+  //console.log('data 1', DATA);
+  //console.log('data 2', DATA.USER_MAIN_DATA[0].userInfos.firstName);
+  //const firstName = DATA.USER_MAIN_DATA[0].userInfos.firstName; // TODO: ça c'est pas dynamique
 
   // trouver un moyen dynamique à cette id
-  const id = 12;
+  //const id = 12;
 
   // const filteredData = DATA.filter((array) => array.includes(id));
   // console.log('les data Filtrés', filteredData);
 
-  const format = new FormatData(DATA);
-  console.log('instanciation', format);
-  const dailyActivitiesData = format.getDataForBarcharts(id);
-  console.log('methode1', dailyActivitiesData);
+  // const format = new FormatData(DATA);
+  // console.log('instanciation', format);
+  // const dailyActivitiesData = format.getDataForBarcharts(userId);
+  // console.log('methode1', dailyActivitiesData);
 
-  const averageSessionData = format.getDataForLineChart(id);
-  console.log('methode2', averageSessionData);
+  // const averageSessionData = format.getDataForLineChart(userId);
+  // console.log('methode2', averageSessionData);
 
-  const webPerformanceData = format.getDataForRadarChart(id);
-  console.log('methode3', webPerformanceData);
+  // const webPerformanceData = format.getDataForRadarChart(userId);
+  // console.log('methode3', webPerformanceData);
 
-  const scoreData = 12;
-
-  const dietCountData = format.getDataForCards(id);
-  console.log('methode5', dietCountData);
+  // const dietCountData = format.getDataForCards(userId);
+  // console.log('methode5', dietCountData);
 
   return (
     <div>
       <Navbar />
       <StyledMain>
+        {/* //{error && <p>Something went wrong</p>} */}
         <h1>
           Bonjour <span>{firstName}</span>
         </h1>
@@ -90,7 +271,7 @@ const Dashboard = () => {
             <section className="mainGraphsBoxesSection">
               <AverageSession data={averageSessionData} />
               <WebPerformance data={webPerformanceData} />
-              <Score />
+              <Score data={scoreData} />
             </section>
           </article>
           <aside>

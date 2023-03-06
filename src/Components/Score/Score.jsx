@@ -10,7 +10,10 @@ import {
 
 const CustomLegend = (props) => {
   //console.log('PROPS CUSTOMLEGEND', props.payload[0].payload.uv * 100); //0.12
-  const customLegendData = props.payload[0].payload.uv * 100;
+  //const customLegendData = props.payload[0].payload.uv * 100;
+  //console.log('custom legend', props);
+  const customLegendData = props.data;
+
   return (
     <div style={{ maxWidth: '95px', margin: 'auto' }}>
       <p
@@ -37,21 +40,26 @@ const CustomLegend = (props) => {
   );
 };
 
-const Score = () => {
+const Score = (props) => {
   // créer la data dynamiquement
+  //console.log('props dans Score', props); // props.data = 30
+  const scoreData = props.data;
+  //console.log(typeof scoreData);
+
   const data = [
     {
-      uv: '0.12 ',
+      uv: `${scoreData}`,
       fill: 'red',
     },
   ];
-  const style = {
-    color: 'blue',
-    top: '50%',
-    right: 0,
-    transform: 'translate(0, -50%)',
-    lineHeight: '24px',
-  };
+
+  // const style = {
+  //   color: 'blue',
+  //   top: '50%',
+  //   right: 0,
+  //   transform: 'translate(0, -50%)',
+  //   lineHeight: '24px',
+  // };
 
   return (
     <ResponsiveContainer aspect="0.98">
@@ -71,7 +79,7 @@ const Score = () => {
       >
         <PolarAngleAxis
           type="number"
-          domain={[0, 1]}
+          domain={[0, 100]}
           dataKey={'uv'}
           angleAxisId={0}
           tick={false}
@@ -101,7 +109,7 @@ const Score = () => {
           </tspan>
         </text>
         <Legend
-          content={<CustomLegend />}
+          content={<CustomLegend data={scoreData} />}
           align="center"
           verticalAlign="middle"
         />

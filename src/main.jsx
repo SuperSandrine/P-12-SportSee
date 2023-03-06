@@ -5,6 +5,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './Pages/App/App';
 import Home from './Pages/Home/Home';
 import Dashboard from './Pages/Dashboard/Dashboard';
+//import Dashboard, { loader as rootLoader } from './Pages/Dashboard/Dashboard';
+import ErrorPage from './Pages/Error/Error';
 
 import './styles/index.css';
 
@@ -17,18 +19,28 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Home />,
+    errorElement: <ErrorPage />,
   },
   {
     path: '/Home',
     element: <Home />,
+    errorElement: <ErrorPage />,
   },
   {
     path: '/App',
     element: <App />,
+    errorElement: <ErrorPage />,
   },
   {
-    path: '/profile',
-    element: <Dashboard />,
+    path: '/profile/:id',
+    element: <Dashboard mocked={false} />,
+    errorElement: <ErrorPage />,
+    //loader: rootLoader,
+  },
+  {
+    path: '/profileMocked/:id',
+    element: <Dashboard mocked={true} />,
+    errorElement: <ErrorPage />,
   },
 ]);
 
