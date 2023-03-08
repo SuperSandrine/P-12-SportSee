@@ -45,11 +45,11 @@ class FormatData extends React.Component {
 
   getDataForBarcharts(id) {
     if (!id) {
-      // console.log('fonction "avoir data bar" en cours', this.state);
-      // console.log(
-      //   'fonction "avoir data bar" en cours2',
-      //   this.state.activity.data.sessions
-      // );
+      console.log('fonction "avoir data bar" en cours', this.state);
+      console.log(
+        'fonction "avoir data bar" en cours2',
+        this.state.activity.data.sessions
+      );
       return this.state.activity.data.sessions;
     } else {
       //console.log('id dans getData', id);

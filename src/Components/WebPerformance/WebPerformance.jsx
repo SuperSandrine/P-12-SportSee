@@ -14,7 +14,7 @@ import {
 const WebPerformance = (props) => {
   //console.log('props dans webPerformance', props);
   const dataWP = props.data.data;
-  //console.log('dataWP', dataWP);
+  console.log('dataWP', dataWP);
   const dataKindWP = props.data.kind;
   //console.log('dataKindWP', dataKindWP[4]);
 

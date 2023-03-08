@@ -16,23 +16,23 @@ import styled from 'styled-components';
 import { ResponsiveContainer } from 'recharts';
 import { Rectangle } from 'recharts';
 
-const styleBar = styled.div`
-.bar{
-  viewBox="0 0 8 3"
-}
-.recharts-legend-item-text{
-  color:"orange";
-}
-`;
+// const styleBar = styled.div`
+// .bar{
+//   viewBox="0 0 8 3"
+// }
+// .recharts-legend-item-text{
+//   color:"orange";
+// }
+// `;
 
 const CustomCursorBar = (props) => {
   const { x, y, width, height, stroke } = props;
 
   return (
     <Rectangle
-      backgroundColor="pink"
-      //fill="red"
-      stroke="red"
+      //backgroundColor="pink"
+      fill="pink"
+      //stroke="red"
       x={x}
       y={y}
       width={width}
@@ -177,10 +177,13 @@ const DailyActivities = (props) => {
           itemStyle={{ color: 'white', fontSize: 14 }}
           // content={TODO: custom content}
           content={<CustomTooltipBarchart />}
-          cursor={{
-            //stroke: 'grey',
-            fill: 'rgba(196, 196, 196, 0.5)',
-          }}
+          cursor={
+            //<CustomCursorBar />
+            {
+              //   //stroke: 'grey',
+              fill: 'rgba(196, 196, 196, 0.5)',
+            }
+          }
           // TODO: mette le fonc derrière
           //cursor={<CustomCursorBar />}
         />

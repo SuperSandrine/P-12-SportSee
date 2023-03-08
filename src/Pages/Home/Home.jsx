@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../../Components/Navbar/Navbar';
 
-import { StyledMain } from '../Dashboard/Dashboard';
+import { StyledDiv } from './StyledDiv';
+import { StyledMain } from '../Dashboard/StyledMain';
 
 const Home = () => {
   return (
@@ -10,10 +11,15 @@ const Home = () => {
       <Navbar />
       <StyledMain>
         <h1>Page d'accueil</h1>
-        <p>Choisir entre la version mockée ou la version fetch</p>
-        <Link to="/profile/12"> User 12 </Link>
-        <Link to="/profile/18"> User 18</Link>
-        <Link to="/profilemocked/12"> User 12 mocked </Link>
+        <p className="welcomeSentence">
+          Choisir son utilisateur en version mockée ou en version fetch
+        </p>
+        <StyledDiv>
+          <Link to="/profile/12"> User 12 </Link>
+          <Link to="/profile/18"> User 18</Link>
+          <Link to="/profilemocked/12"> User 12 mocked </Link>
+          <Link to="/profilemocked/18"> User 18 mocked </Link>
+        </StyledDiv>
       </StyledMain>
     </div>
   );

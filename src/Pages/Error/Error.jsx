@@ -10,7 +10,7 @@ export default function ErrorPage() {
       <Navbar />
       <h1 style={{ paddingLeft: '200px' }}>Oops!</h1>
       <p style={{ paddingLeft: '200px' }}>
-        Sorry, an unexpected error has occurred.
+        Désolée, une erreur inattendue s'est produite.
       </p>
       <p style={{ paddingLeft: '200px' }}>
         <i>{error.statusText || error.message}</i>
