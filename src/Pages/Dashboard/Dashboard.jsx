@@ -13,8 +13,10 @@ import WebPerformance from '../../Components/WebPerformance/WebPerformance';
 import Score from '../../Components/Score/Score';
 import DietCount from '../../Components/DietCount/DietCount';
 import { useParams } from 'react-router-dom';
+
 //import { test } from 'vitest';
 //import { buildErrorMessage } from 'vite';
+//import { getData } from '../../Data/GetData.jsx';
 //import { useLoaderData } from 'react-router-dom';
 
 //export async function loader() {
@@ -22,6 +24,11 @@ import { useParams } from 'react-router-dom';
 //const contacts = await getFirstNameFromData();
 //return { contacts };
 //}
+
+// export async function loaderDesData() {
+//   const desData = await getData();
+//   return { desData };
+// }
 
 export const StyledMain = styled.main`
   padding-left: 15.5vw;
@@ -65,7 +72,8 @@ export const StyledMain = styled.main`
 const Dashboard = (props) => {
   const paramsId = useParams();
   const userId = paramsId.id;
-  // const { contacts } = useLoaderData();
+  //const { magicHappens } = useLoaderData();
+  //console.log('does magic really happens?', magicHappens);
   // console.log('contacts', contacts.lenght);
 
   //console.log('USER-ID from params', userId); // 12
@@ -78,8 +86,8 @@ const Dashboard = (props) => {
     scoreData;
 
   if (props.mocked === true) {
-    console.log("****C'est bien mocké !!! ****");
-    console.log('data mockée', DATA);
+    //console.log("****C'est bien mocké !!! ****");
+    //console.log('data mockée', DATA);
     const format = new FormatData(DATA);
     firstName = format.getFirstNameFromData(userId);
 
@@ -105,26 +113,34 @@ const Dashboard = (props) => {
     const [
       mainData,
       activityData,
-      averageSessionData,
+      averageSessionsData,
       performanceData,
       error,
       loading,
     ] = useFetch(userId);
 
+    //console.log('********************', useFetch(userId));
     console.log('le fecth a t-il fonctionné avec activityData', activityData);
     //const retrouverlesdata = async () => {
     const azerty = new Object();
     azerty.USER_MAIN_DATA = mainData;
     azerty.USER_ACTIVITY = activityData;
-    azerty.USER_AVERAGE_SESSIONS = averageSessionData;
+    azerty.USER_AVERAGE_SESSIONS = averageSessionsData;
     azerty.USER_PERFORMANCE = performanceData;
     console.log('est-ce que j"ai mon nouvel objet avec ttes les data?', azerty);
 
     const format = new FormatData(azerty);
-    // console.log(
-    //   'est)ce que il se passe qqchose quand jappelle la classe format',
-    //   format
-    // );
+
+    console.log(
+      'est)ce que il se passe qqchose quand jappelle la classe format',
+      format
+    );
+    //console.log('le format de length', format.props.USER_ACTIVITY.length === 0);
+    //console.log(format ? 'yes' : 'no');
+
+    // if (format.props.USER_ACTIVITY.length === 0) {
+    //   <h1>Loading ...</h1>;
+    // } else {
     //firstName = format.getFirstNameFromData();
     //console.log("est-ce que j'ai un prénom", firstName);
 
@@ -181,6 +197,10 @@ const Dashboard = (props) => {
     //firstName = format.getFirstNameFromData(userId);
     //console.log('firstname', firstName);
 
+    console.log('françois,maindata', mainData);
+    console.log('françois', azerty);
+    console.log('françois loading', loading);
+
     return (
       <div>
         {loading && <p>Loading ...</p>}
@@ -192,11 +212,40 @@ const Dashboard = (props) => {
             <h3>
               Bonjour {userId}
               <span>
+                {console.log('*******', mainData, mainData.data)}
+                {console.log('*******2222222', azerty)}
+
+                {mainData && mainData.data && mainData.data.id && (
+                  <p>
+                    {console.log(
+                      'françois format cards',
+                      format.getDataForCards()
+                    )}
+                  </p>
+                )}
                 {
+                  //FRAN9OIS: quand j'appelle une méthode alors ça se plante quand les données ne sont pas chargées comment faire pour attendre que mes données soient chargées avant de les travailler?
                   // const format = new FormatData(azerty)
-                  format.getFirstNameFromData()
+                  // format.getFirstNameFromData()
                   // firstName=format.getFirstNameFromData()
                   // firstName
+                  // console.log(
+                  //   'françois format linechart',
+                  //   format.getDataForLineChart()
+                  // )
+                  // console.log(
+                  //   'françois format linechart',
+                  //   format.getDataForRadarChart()
+                  // )
+                  // console.log(
+                  //   'françois format linechart',
+                  //   format.getDataForRadialChart()
+                  // )
+                  // dietCountData = format.getDataForCards();
+                  //               console.log(
+                  //                 'françois format barchart',
+                  //                 format.getDataForLineChart()
+                  //               )
                 }
               </span>
               <br />
@@ -210,8 +259,38 @@ const Dashboard = (props) => {
         )}
       </div>
     );
-    //patienter pour recevoir les data
   }
+  //   return (
+  //     <div>
+  //       {loading && <p>Loading ...</p>}
+  //       {error ? (
+  //         <p>Something went wrong</p>
+  //       ) : (
+  //         <div>
+  //           <p>ça marche !!!</p>
+  //           <h3>
+  //             Bonjour {userId}
+  //             <span>
+  //               {
+  //                 // const format = new FormatData(azerty)
+  //                 format.getFirstNameFromData()
+  //                 // firstName=format.getFirstNameFromData()
+  //                 // firstName
+  //               }
+  //             </span>
+  //             <br />
+  //             le barChart:
+  //             {
+  //               //format.getDataForBarcharts()
+  //             }
+  //             ;
+  //           </h3>
+  //         </div>
+  //       )}
+  //     </div>
+  //   );
+  //   //patienter pour recevoir les data
+  // }
 
   // comment afficher le dashboard à partir d'un mock et/ou d'un fetch
   // si

@@ -5,7 +5,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './Pages/App/App';
 import Home from './Pages/Home/Home';
 import Dashboard from './Pages/Dashboard/Dashboard';
-//import Dashboard, { loader as rootLoader } from './Pages/Dashboard/Dashboard';
+//import Dashboard, {
+//   loaderDesData as dashboardLoader,
+// } from './Pages/Dashboard/Dashboard';
 import ErrorPage from './Pages/Error/Error';
 
 import './styles/index.css';
@@ -35,7 +37,7 @@ const router = createBrowserRouter([
     path: '/profile/:id',
     element: <Dashboard mocked={false} />,
     errorElement: <ErrorPage />,
-    //loader: rootLoader,
+    //loader: dashboardLoader,
   },
   {
     path: '/profileMocked/:id',

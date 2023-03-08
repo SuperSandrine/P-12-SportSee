@@ -52,12 +52,13 @@ export const useFetch = (id) => {
   const [performanceData, setPerformanceData] = useState([]);
 
   const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
-      setError(false);
+      //setError(false);
       setLoading(true);
+      console.log('*** je suis dans le fetch***');
       try {
         const result = await axios.get(`http://localhost:3000/user/${id}`);
         const result2 = await axios.get(
