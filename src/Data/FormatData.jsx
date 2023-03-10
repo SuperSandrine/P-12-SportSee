@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class FormatData extends React.Component {
   constructor(props) {
@@ -141,9 +142,15 @@ class FormatData extends React.Component {
     }
   }
 
-  render() {
-    return <div></div>;
-  }
+  // render() {
+  //   return <div></div>;
+  // }
 }
+FormatData.propTypes = {
+  USER_ACTIVITY: PropTypes.array,
+  USER_AVERAGE_SESSIONS: PropTypes.array,
+  USER_MAIN_DATA: PropTypes.array,
+  USER_PERFORMANCE: PropTypes.array,
+};
 
 export default FormatData;

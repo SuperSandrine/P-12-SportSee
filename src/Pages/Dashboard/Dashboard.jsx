@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { useParams } from 'react-router-dom';
 
 import DATA from '../../../mockedData.js';
@@ -20,7 +22,6 @@ import { StyledMain } from './StyledMain';
 const Dashboard = (props) => {
   const paramsId = useParams();
   const userId = paramsId.id;
-
   let firstName,
     dailyActivitiesData,
     averageSessionData,
@@ -98,7 +99,9 @@ const Dashboard = (props) => {
         <Navbar />
         {loading && <p>Loading ...</p>}
         {error ? (
-          <p>Something went wrong</p>
+          <p style={{ marginLeft: '150px' }}>
+            Something went wrong, <i>{error.statusText || error.message}</i>
+          </p>
         ) : (
           <StyledMain>
             <h1>
@@ -134,22 +137,24 @@ const Dashboard = (props) => {
                   />
                   <WebPerformance
                     data={
-                      //loading ? (
-                      //<p>Loading ...</p>
-                      //) : (
+                      // loading ? (
+                      // <p>Loading ...</p>
+                      // ) : (
                       performanceData &&
                       performanceData.data &&
-                      performanceData.data.data &&
+                      performanceData.data.data[0] &&
                       format.getDataForRadarChart()
                       // console.log(
                       //   'performanceData',
-                      //   performanceData.data.data
+                      //   performanceData.data.data[0]
                       // )
                       //)
                     }
                   />
                   {/* FRANCOIS: étrange, j'ai rajouté le loading ici sinon même avec la vérification de la data, il y avait un niveau de data pas suffisant pour permettre au composant de fonctionner (surement parce que je divise la data au niveau du compasant et non au niveau du get) 
-                  L'erreur path vient d'ici*/}
+                  L'erreur path vient d'ici
+                  L'erreur path apparait avant que la donnée soit chargée, une fois chargée, pas de roblème.
+                  Comment obliger se composant à attendre la data avant de travailler, pourquoi ce composant travaille en avance par rapport au autres?*/}
                   <Score
                     data={
                       mainData &&
@@ -176,6 +181,10 @@ const Dashboard = (props) => {
       </div>
     );
   }
+};
+
+Dashboard.propTypes = {
+  mocked: PropTypes.bool,
 };
 
 export default Dashboard;

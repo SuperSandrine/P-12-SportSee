@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { ResponsiveContainer } from 'recharts';
 import {
   Legend,
@@ -46,13 +47,15 @@ const WebPerformance = (props) => {
       <RadarChart
         width={258}
         height={263}
-        outerRadius="80%"
+        outerRadius="78%"
         data={dataWP}
         style={{ backgroundColor: ' #282D30' }}
         margin={{ top: 25, right: 30, left: 30, bottom: 25 }}
-        radius={[5, 5, 5, 5]} // TODO: ça marche pas
+        //radius={[5, 5, 5, 5]} // TODO: ça marche pas
+        // startAngle={30}
+        // endAngle={-330}
         startAngle={30}
-        endAngle={-330}
+        endAngle={390}
       >
         <PolarGrid stroke="white" gridType="polygon" radialLines={false} />
         <PolarAngleAxis
@@ -66,8 +69,10 @@ const WebPerformance = (props) => {
           //tick={false} // les identifiants des chiffres // gère le titre des lignes qui tiennent la toile
           //TODO: comment espacer les mots du cercle, (endurance)
         />
-        {/* <PolarRadiusAxis angle={30} domain={[0, 'dataMax']} //affiche les valeurs des lignes concentriques
-       />  */}
+        {/* <PolarRadiusAxis
+          angle={30}
+          domain={[0, 300]} //affiche les valeurs des lignes concentriques 
+        />*/}
         <Radar
           dataKey="value"
           //stroke="#FF0101"
@@ -77,6 +82,9 @@ const WebPerformance = (props) => {
       </RadarChart>
     </ResponsiveContainer>
   );
+};
+WebPerformance.propTypes = {
+  data: PropTypes.array,
 };
 
 export default WebPerformance;

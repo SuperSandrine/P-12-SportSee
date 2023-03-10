@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export const ButtonVerticalNavBar = (props) => {
   return (
     <li>
@@ -10,8 +12,13 @@ export const ButtonVerticalNavBar = (props) => {
           border: 'none',
         }}
       >
-        <img src={props.picture} />
+        <img src={props.picture} alt={props.alt} />
       </button>
     </li>
   );
+};
+
+ButtonVerticalNavBar.propTypes = {
+  picture: PropTypes.string,
+  alt: PropTypes.string,
 };

@@ -35,6 +35,7 @@ const CustomTooltip = ({ active, payload, label }) => {
 };
 
 const CustomCursor = (props) => {
+  //console.log(props)
   const { points, width, height } = props;
   //console.log('customcurso props', height, width);
 
@@ -52,13 +53,20 @@ const CustomCursor = (props) => {
     />
   );
 };
+// FRANCOIS: est-ce qu'il faut faire les proptypes de customCursor?
+CustomCursor.propTypes = {
+  height: PropTypes.number,
+  width: PropTypes.number,
+  payload: PropTypes.array,
+  points: PropTypes.array,
+};
 
 //TODO: faire sortir la ligne (
 //  -ajouter des datas dynamiquement)
 //  -enlever le padding
 
 const AverageSession = (props) => {
-  console.log('averagesession', props.data);
+  //console.log('averagesession', props);
   const formatNumberInDay = (value) => {
     //FRANcois, pourquoi quand je mets un console.log ici, il est publier bcp de fois dans la console,
     //FRANCOIS, est-ce que un return dans switch c'est mal?
@@ -212,6 +220,10 @@ const AverageSession = (props) => {
   );
 };
 
-AverageSession.propTypes = {};
+AverageSession.propTypes = {
+  data: PropTypes.array,
+  //data:PropTypes.array.isRequired,
+  //FRANCOIS, j'aurai préféré mettre un isRequired, mais j'ai une erreur qui s'affiche le temps du chargement, comment ne pas avoir d'erreur et isrequired??
+};
 
 export default AverageSession;

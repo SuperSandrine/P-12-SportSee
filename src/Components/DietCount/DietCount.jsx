@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { ResponsiveContainer } from 'recharts';
 //import styled from 'styled-components';
 // donnée dans main data/index/keydata
@@ -11,7 +13,7 @@ import proteinIcon from './../../assets/iconprotein.svg';
 
 const DietCount = (props) => {
   const dietsData = props.data;
-  //console.log('dietsData', dietsData);
+  //console.log('dietsData', props);
   //console.log('dietsData2', dietsData[0].name); //calCount
 
   const fillUpData = (element) => {
@@ -88,3 +90,7 @@ const DietCount = (props) => {
 };
 
 export default DietCount;
+
+DietCount.propTypes = {
+  data: PropTypes.array,
+};

@@ -1,6 +1,7 @@
 // récupérer la data mocked
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 export const useFetch = (id) => {
   const [mainData, setMainData] = useState([]);
@@ -46,4 +47,8 @@ export const useFetch = (id) => {
     error,
     loading,
   ];
+};
+
+useFetch.propTypes = {
+  id: PropTypes.string,
 };

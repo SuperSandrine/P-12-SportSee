@@ -16,15 +16,9 @@ import styled from 'styled-components';
 import { ResponsiveContainer } from 'recharts';
 import { Rectangle } from 'recharts';
 
-// const styleBar = styled.div`
-// .bar{
-//   viewBox="0 0 8 3"
-// }
-// .recharts-legend-item-text{
-//   color:"orange";
-// }
-// `;
+//import CustomTooltipBarchart from './CustomTooltipBarchart.jsx';
 
+// pas utilisé
 const CustomCursorBar = (props) => {
   const { x, y, width, height, stroke } = props;
 
@@ -41,7 +35,7 @@ const CustomCursorBar = (props) => {
   );
 };
 
-const CustomTooltipBarchart = ({ active, payload, label }) => {
+const CustomTooltipBarchart = ({ active, payload }) => {
   if (active && payload && payload.length) {
     //console.log('PAYLOAD', payload);
     //console.log('Label', label);
@@ -66,6 +60,11 @@ const CustomTooltipBarchart = ({ active, payload, label }) => {
   }
 
   return null;
+};
+
+CustomTooltipBarchart.propTypes = {
+  active: PropTypes.bool,
+  payload: PropTypes.array,
 };
 
 const DailyActivities = (props) => {
@@ -228,6 +227,8 @@ const DailyActivities = (props) => {
   );
 };
 
-//DailyActivities.propTypes = {};
+DailyActivities.propTypes = {
+  data: PropTypes.array,
+};
 
 export default DailyActivities;

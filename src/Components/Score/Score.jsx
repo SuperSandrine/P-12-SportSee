@@ -1,4 +1,6 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+
 import { PolarAngleAxis } from 'recharts';
 import {
   RadialBarChart,
@@ -38,6 +40,10 @@ const CustomLegend = (props) => {
       </p>
     </div>
   );
+};
+
+CustomLegend.propTypes = {
+  data: PropTypes.number,
 };
 
 const Score = (props) => {
@@ -118,5 +124,9 @@ const Score = (props) => {
     </ResponsiveContainer>
   );
 }; // donnée dans activity/index/sessions
+
+Score.propTypes = {
+  data: PropTypes.number,
+};
 
 export default Score;
