@@ -1,17 +1,17 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 
-import DataCalls from '../../Data/DataCalls';
 import DATA from '../../../mockedData.js';
 import { useFetch } from '../../Data/GetData.jsx';
+import FormatData from '../../Data/FormatData';
 
 import Navbar from '../../Components/Navbar/Navbar';
 import DailyActivities from '../../Components/DailyActivities/DailyActivities.jsx';
-import FormatData from '../../Data/FormatData';
 import AverageSession from '../../Components/AverageSession/AverageSession';
 import WebPerformance from '../../Components/WebPerformance/WebPerformance';
 import Score from '../../Components/Score/Score';
 import DietCount from '../../Components/DietCount/DietCount';
-import { useParams } from 'react-router-dom';
+
 import { StyledMain } from './StyledMain';
 
 // dashboard récupère le paramètre et la donnée mockée
@@ -53,7 +53,6 @@ const Dashboard = (props) => {
       <div>
         <Navbar />
         <StyledMain>
-          {/* //{error && <p>Something went wrong</p>} */}
           <h1>
             Bonjour <span>{firstName}</span>
           </h1>
@@ -77,7 +76,6 @@ const Dashboard = (props) => {
       </div>
     );
   } else {
-    console.log("____C'est pas mocké !!! ____");
     const [
       mainData,
       activityData,
@@ -92,18 +90,8 @@ const Dashboard = (props) => {
     azerty.USER_ACTIVITY = activityData;
     azerty.USER_AVERAGE_SESSIONS = averageSessionsData;
     azerty.USER_PERFORMANCE = performanceData;
-    console.log('est-ce que j"ai mon nouvel objet avec ttes les data?', azerty);
 
     const format = new FormatData(azerty);
-
-    console.log(
-      'est)ce que il se passe qqchose quand jappelle la classe format',
-      format
-    );
-
-    console.log('françois,maindata', mainData);
-    console.log('françois', azerty);
-    console.log('françois loading', loading);
 
     return (
       <div>
@@ -146,17 +134,22 @@ const Dashboard = (props) => {
                   />
                   <WebPerformance
                     data={
-                      loading ? (
-                        <p>Loading ...</p>
-                      ) : (
-                        performanceData &&
-                        performanceData.data &&
-                        performanceData.data.userId &&
-                        format.getDataForRadarChart()
-                      )
+                      //loading ? (
+                      //<p>Loading ...</p>
+                      //) : (
+                      performanceData &&
+                      performanceData.data &&
+                      performanceData.data.data &&
+                      format.getDataForRadarChart()
+                      // console.log(
+                      //   'performanceData',
+                      //   performanceData.data.data
+                      // )
+                      //)
                     }
                   />
-                  {/* FRANCOIS: étrange, j'ai rajouté le loading ici sinon même avec la vérification de la data, il y avait un niveau de data pas suffisant pour permettre au composant de fonctionner (surement parce que je divise la data au niveau du compasant et non au niveau du get) */}
+                  {/* FRANCOIS: étrange, j'ai rajouté le loading ici sinon même avec la vérification de la data, il y avait un niveau de data pas suffisant pour permettre au composant de fonctionner (surement parce que je divise la data au niveau du compasant et non au niveau du get) 
+                  L'erreur path vient d'ici*/}
                   <Score
                     data={
                       mainData &&

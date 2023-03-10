@@ -13,9 +13,9 @@ import {
 
 const WebPerformance = (props) => {
   //console.log('props dans webPerformance', props);
-  const dataWP = props.data.data;
+  const dataWP = props.data;
   console.log('dataWP', dataWP);
-  const dataKindWP = props.data.kind;
+  //const dataKindWP = props.data.kind;
   //console.log('dataKindWP', dataKindWP[4]);
 
   const formatEngToFrKind = (value) => {
@@ -46,7 +46,7 @@ const WebPerformance = (props) => {
       <RadarChart
         width={258}
         height={263}
-        outerRadius="85%"
+        outerRadius="80%"
         data={dataWP}
         style={{ backgroundColor: ' #282D30' }}
         margin={{ top: 25, right: 30, left: 30, bottom: 25 }}
@@ -60,7 +60,7 @@ const WebPerformance = (props) => {
           tickFormatter={formatEngToFrKind}
           // TODO = récupérer le code kind et aller cherche le nom dans kind
           axisLine={false}
-          tick={{ fill: 'white', fontSize: '12px', padding: '5px' }}
+          tick={{ fill: 'white', fontSize: '1.1rem', padding: '5px' }}
           //radius={20}
           //axisLineType="circle" //tickLine={false}
           //tick={false} // les identifiants des chiffres // gère le titre des lignes qui tiennent la toile

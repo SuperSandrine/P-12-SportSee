@@ -47,15 +47,16 @@ const CustomTooltipBarchart = ({ active, payload, label }) => {
     //console.log('Label', label);
     return (
       <div
-        className="custom-tooltip"
+        //className="custom-tooltip"
         style={{
           color: 'white',
           backgroundColor: 'red',
           border: 'none',
           padding: '0.6vw',
-          fontSize: '8px',
+          fontSize: '0.8rem',
           lineHeight: '24px',
           textAlign: 'center',
+          outline: 'none',
         }}
       >
         <p className="label">{`${payload[0].value}kg`}</p>
@@ -167,14 +168,14 @@ const DailyActivities = (props) => {
           //active={true}
           //position={{ x: 200, y: 0 }}
           label={false}
-          contentStyle={{
-            backgroundColor: 'red',
-            color: 'blue',
-            border: 'none',
-            textDecoration: 'none',
-            outline: 'none', // TODO: ça a marché 2 secondes... étrange, y a un truc avec le clic.
-          }}
-          itemStyle={{ color: 'white', fontSize: 14 }}
+          // contentStyle={{
+          //   backgroundColor: 'red',
+          //   color: 'blue',
+          //   border: 'none',
+          //   textDecoration: 'none',
+          //   outline: 'none', // TODO: ça a marché 2 secondes... étrange, y a un truc avec le clic.
+          // }}
+          //itemStyle={{ color: 'white', fontSize: 14 }}
           // content={TODO: custom content}
           content={<CustomTooltipBarchart />}
           cursor={
@@ -182,6 +183,8 @@ const DailyActivities = (props) => {
             {
               //   //stroke: 'grey',
               fill: 'rgba(196, 196, 196, 0.5)',
+              //stroke: 'grey',
+              strokeOpacity: 0.3,
             }
           }
           // TODO: mette le fonc derrière

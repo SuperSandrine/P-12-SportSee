@@ -6,6 +6,8 @@ import { YAxis } from 'recharts';
 import { Tooltip } from 'recharts';
 import { Line } from 'recharts';
 import { ResponsiveContainer } from 'recharts';
+import { ReferenceArea } from 'recharts';
+import { Rectangle } from 'recharts';
 // donnée dans averageSession/index/sessions
 // #US12 : En tant qu’utilisateur, je veux voir ma durée moyenne des sessions sous la forme d’un LineChart. L’axe des abscisses correspond à la durée moyenne des sessions. Un tooltip apparaît au survol.
 
@@ -15,20 +17,40 @@ const CustomTooltip = ({ active, payload, label }) => {
     //console.log('Label', label);
     return (
       <div
-        className="custom-tooltip"
+        //className="custom-tooltip"
         style={{
           backgroundColor: 'white',
           border: 'none',
           padding: '0.6vw',
-          fontSize: '8px',
+          paddingTop: '0.8vw',
+          fontSize: '0.8rem',
+          height: 'inherit',
         }}
       >
-        <p className="label">{`${payload[0].value}min`}</p>
+        <p>{`${payload[0].value}min`}</p>
       </div>
     );
   }
-
   return null;
+};
+
+const CustomCursor = (props) => {
+  const { points, width, height } = props;
+  //console.log('customcurso props', height, width);
+
+  const { x, y } = points[0];
+  //const { x1, y1 } = points[1];
+  //console.log(props);
+  return (
+    <Rectangle
+      fill="black"
+      opacity={0.2}
+      x={x}
+      y={y}
+      width={width + 50}
+      height={height + 100}
+    />
+  );
 };
 
 //TODO: faire sortir la ligne (
@@ -36,6 +58,7 @@ const CustomTooltip = ({ active, payload, label }) => {
 //  -enlever le padding
 
 const AverageSession = (props) => {
+  console.log('averagesession', props.data);
   const formatNumberInDay = (value) => {
     //FRANcois, pourquoi quand je mets un console.log ici, il est publier bcp de fois dans la console,
     //FRANCOIS, est-ce que un return dans switch c'est mal?
@@ -64,6 +87,13 @@ const AverageSession = (props) => {
         console.log('Vérifier la donnée des average Session');
     }
   };
+  // const ajout = {{ day: 0, sessionLength: 30 }{props.data}};
+  // const ajout2 = { day: 8, sessionLength: 20 };
+  // const origin = [props.data];
+  // //const dataxtended = ajout.push(ajout2);
+  // console.log('origin', origin);
+  // console.log('dataextende', dataxtended);
+  // console.log('ajout après', ajout);
 
   return (
     <ResponsiveContainer aspect="0.98">
@@ -72,9 +102,18 @@ const AverageSession = (props) => {
         height={263}
         data={props.data}
         style={{ backgroundColor: ' #FF0000' }}
-        margin={{ top: 25, right: 30, left: 30, bottom: 25 }}
+        margin={{ top: 1, right: 15, left: 15, bottom: 4 }}
         radius={[5, 5, 5, 5]} //TODO : comme Barchart ??
       >
+        <defs>
+          <linearGradient id="colorGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="30%" stopColor="#FFFFFF" stopOpacity={0.4} />
+            <stop offset="50%" stopColor="#FFFFFF" stopOpacity={0.6} />
+            <stop offset="95%" stopColor="#FFFFFF" stopOpacity={1} />
+            {/* <stop offset="50%" stop-color="white" /> */}
+            {/* //<stop offset="95%" stop-color="#blue" /> */}
+          </linearGradient>
+        </defs>
         <text
           fill="#FFFFFF"
           opacity={0.5}
@@ -86,39 +125,43 @@ const AverageSession = (props) => {
           // FRANCOIS: 2 Tspan, c'est mal?
         >
           <tspan
-            x={29}
-            y={34}
+            x={22}
+            y={28}
             //width={70}
           >
             Durée moyenne des
           </tspan>
-          <tspan x={29} y={54}>
+          <tspan x={22} y={46}>
             sessions
           </tspan>
         </text>
         <XAxis
           dataKey="day"
-          padding={{ top: 10 }}
-          itemStyle={{ color: 'blue' }}
+          //padding={{ top: -10 }}
+          //itemStyle={{ color: 'blue' }}
           tickLine={false}
           axisLine={false}
-          tick={{ fill: '#FFFFFF', fontSize: '12px', opacity: '0.5' }}
-          dy={15}
+          tick={{ fill: '#FFFFFF', fontSize: '1rem', opacity: '0.5' }}
+          //dy={}
           tickFormatter={formatNumberInDay}
           //ticks={['L', 'M', 'M', 'J', 'V', 'S', 'D']}
         />
         <YAxis
           hide={true}
           dataKey="sessionLength"
-          domain={[0, 'dataMax + 10']}
+          domain={['dataMin - 10', 'dataMax + 20']} // réduire le domain?
         />
         <Tooltip
           content={<CustomTooltip />}
-          cursor={{
-            stroke: 'black',
-            strokeOpacity: 0.7,
-            strokeWidth: 40,
-          }}
+          offset={20}
+          // position={{ y: 5 }}
+          cursor={<CustomCursor />}
+          // cursor={{
+          //   stroke: 'black',
+          //   strokeOpacity: 0.3,
+          //   strokeWidth: 40,
+          //   // TODO: afficher à partir du point et e toute hauteur et largeur du container parent
+          // }}
           // contentStyle={{
           //   backgroundColor: 'white',
           //   color: 'blue',
@@ -133,17 +176,37 @@ const AverageSession = (props) => {
           //type="natural"
           dataKey="sessionLength"
           dot={false}
-          stroke="#FFFFFF"
-          activeDot={{ stroke: 'white', r: 3 }}
-          //activeDot={{ stroke: 'pink', strokeWidth: 1, r: 1 }}
-          //label={{ fill: 'blue', fontSize: 20 }}
-          strokeWidth={2} //épaisseur de la ligne // François: customized
-          //strokeDasharray="4 4 9" //pointillés
-          style={{
-            filter: `drop-shadow(0px 2px 3px blue)`,
-            //TODO: chercher le linear gradient à mettre à la place de dropshadow, est-ce un filter?
+          stroke="url(#colorGradient)"
+          //activeDot={{ stroke: 'white', r: 3 }}
+          activeDot={{
+            fill: 'white',
+            r: 4,
+            strokeWidth: 8,
+            strokeOpacity: 0.4,
+            stroke: 'white',
           }}
+          //label={{ fill: 'blue', fontSize: 20 }}
+          strokeWidth={3} //épaisseur de la ligne // François: customized
+          //strokeDasharray="4 4 9" //pointillés
         />
+
+        {/* <ReferenceArea
+          x1={5}
+          //TODO: rempli dynamiquement x1 avec le côté actif de la souris
+          y1={0}
+          y2={60} // TODO: Je n'arrive pas à sortir du domaine, normal je suis dans un reference area
+          fill="black"
+          opacity={0.2} // TODO: mettre sur 0.1
+          //viewBox={{ x: 0, y: 0, width: 1, height: 1 }} //??
+
+          //height="150px"
+          //x2={}
+          //y1={}
+          //y2={100}
+          //stroke="blue"
+          //strokeWidth={20}
+          //strokeOpacity={0.3}
+        /> */}
       </LineChart>
     </ResponsiveContainer>
   );

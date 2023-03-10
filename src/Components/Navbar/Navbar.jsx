@@ -18,7 +18,7 @@ const Navbar = () => {
           <img src={logo} alt="logo de sportsee" />
         </StyledLink>
         <StyledLink to="/">Accueil</StyledLink>
-        <StyledLink to="/profile">Profil</StyledLink>
+        <StyledLink to="/profile/:id">Profil</StyledLink>
         <StyledLink to="/workinprogress">Réglages</StyledLink>
         <StyledLink to="/workinprogress">Communauté</StyledLink>
       </StyledNav>
@@ -39,7 +39,6 @@ const Navbar = () => {
               transform: 'rotate(-90deg)',
               whiteSpace: 'nowrap',
               width: 'fit-content',
-              paddingBottom: '40px',
             }}
           >
             Copyright, SportSee 2020

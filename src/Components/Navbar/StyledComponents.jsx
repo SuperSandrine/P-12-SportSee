@@ -17,7 +17,7 @@ export const StyledLink = styled(Link)`
   font-size: 24px;
 `;
 export const StyledVerticalUl = styled.ul`
-  width: 117px;
+  width: 8.13vw;
   height: calc(100vh - 85px);
   display: flex;
   display: flex;
