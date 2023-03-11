@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const CustomTooltipBarchart = ({ active, payload, label }) => {
-  console.log('customtooltipbar', payload);
+  //console.log('customtooltipbar', payload);
   if (active && payload && payload.length) {
     //console.log('PAYLOAD', payload);
     console.log('Label', label);
@@ -32,6 +32,7 @@ const CustomTooltipBarchart = ({ active, payload, label }) => {
 CustomTooltipBarchart.propTypes = {
   active: PropTypes.bool,
   payload: PropTypes.array,
+  label: PropTypes.string,
 };
 
 export default CustomTooltipBarchart;

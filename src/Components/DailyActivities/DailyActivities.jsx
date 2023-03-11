@@ -35,7 +35,7 @@ const CustomCursorBar = (props) => {
   );
 };
 
-const CustomTooltipBarchart = ({ active, payload }) => {
+const CustomTooltipBarchart = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
     //console.log('PAYLOAD', payload);
     //console.log('Label', label);
@@ -65,6 +65,7 @@ const CustomTooltipBarchart = ({ active, payload }) => {
 CustomTooltipBarchart.propTypes = {
   active: PropTypes.bool,
   payload: PropTypes.array,
+  label: PropTypes.string,
 };
 
 const DailyActivities = (props) => {

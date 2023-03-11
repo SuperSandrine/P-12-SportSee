@@ -93,93 +93,97 @@ const Dashboard = (props) => {
     azerty.USER_PERFORMANCE = performanceData;
 
     const format = new FormatData(azerty);
-
-    return (
-      <div>
-        <Navbar />
-        {loading && <p>Loading ...</p>}
-        {error ? (
-          <p style={{ marginLeft: '150px' }}>
-            Something went wrong, <i>{error.statusText || error.message}</i>
-          </p>
-        ) : (
-          <StyledMain>
-            <h1>
-              Bonjour{' '}
-              <span>
-                {mainData &&
-                  mainData.data &&
-                  mainData.data.id &&
-                  format.getFirstNameFromData()}
-              </span>
-            </h1>
-            <p className="welcomeSentence">
-              Félicitations ! Vous avez explosé vos objectifs hier 👏
+    if (loading) {
+      return <p>En chargement, patienter quelques instants</p>;
+    } else {
+      return (
+        <div>
+          <Navbar />
+          {loading && <p>Loading ...</p>}
+          {error ? (
+            <p style={{ marginLeft: '150px' }}>
+              Something went wrong, <i>{error.statusText || error.message}</i>
             </p>
-            <div className="mainGraphs">
-              <article className="mainGraphsBoxes">
-                <DailyActivities
-                  data={
-                    activityData &&
-                    activityData.data &&
-                    activityData.data.userId &&
-                    format.getDataForBarcharts()
-                  }
-                />
-                <section className="mainGraphsBoxesSection">
-                  <AverageSession
+          ) : (
+            <StyledMain>
+              <h1>
+                Bonjour{' '}
+                <span>
+                  {mainData &&
+                    mainData.data &&
+                    mainData.data.id &&
+                    format.getFirstNameFromData()}
+                </span>
+              </h1>
+              <p className="welcomeSentence">
+                Félicitations ! Vous avez explosé vos objectifs hier 👏
+              </p>
+              <div className="mainGraphs">
+                <article className="mainGraphsBoxes">
+                  <DailyActivities
                     data={
-                      averageSessionsData &&
-                      averageSessionsData.data &&
-                      averageSessionsData.data.userId &&
-                      format.getDataForLineChart()
+                      activityData &&
+                      activityData.data &&
+                      activityData.data.userId &&
+                      format.getDataForBarcharts()
                     }
                   />
-                  <WebPerformance
-                    data={
-                      // loading ? (
-                      // <p>Loading ...</p>
-                      // ) : (
-                      performanceData &&
-                      performanceData.data &&
-                      performanceData.data.data[0] &&
-                      format.getDataForRadarChart()
-                      // console.log(
-                      //   'performanceData',
-                      //   performanceData.data.data[0]
-                      // )
-                      //)
-                    }
-                  />
-                  {/* FRANCOIS: étrange, j'ai rajouté le loading ici sinon même avec la vérification de la data, il y avait un niveau de data pas suffisant pour permettre au composant de fonctionner (surement parce que je divise la data au niveau du compasant et non au niveau du get) 
+                  <section className="mainGraphsBoxesSection">
+                    <AverageSession
+                      data={
+                        averageSessionsData &&
+                        averageSessionsData.data &&
+                        averageSessionsData.data.userId &&
+                        format.getDataForLineChart()
+                      }
+                    />
+                    <WebPerformance
+                      data={
+                        // loading ? (
+                        //   <p>Loading ...</p>
+                        // ) : (
+
+                        performanceData &&
+                        performanceData.data &&
+                        performanceData.data.userId &&
+                        format.getDataForRadarChart()
+                        // console.log(
+                        //   'performanceData',
+                        //   performanceData.data.data[0]
+                        //)
+                        //)
+                      }
+                    />
+                    {/* FRANCOIS: étrange, j'ai rajouté le loading ici sinon même avec la vérification de la data, il y avait un niveau de data pas suffisant pour permettre au composant de fonctionner (surement parce que je divise la data au niveau du compasant et non au niveau du get) 
                   L'erreur path vient d'ici
                   L'erreur path apparait avant que la donnée soit chargée, une fois chargée, pas de roblème.
                   Comment obliger se composant à attendre la data avant de travailler, pourquoi ce composant travaille en avance par rapport au autres?*/}
-                  <Score
+                    <Score
+                      data={
+                        mainData &&
+                        mainData.data &&
+                        mainData.data.id &&
+                        format.getDataForRadialChart()
+                      }
+                    />
+                  </section>
+                </article>
+                <aside>
+                  <DietCount
                     data={
                       mainData &&
                       mainData.data &&
                       mainData.data.id &&
-                      format.getDataForRadialChart()
+                      format.getDataForCards()
                     }
-                  />
-                </section>
-              </article>
-              <aside>
-                <DietCount
-                  data={
-                    mainData &&
-                    mainData.data &&
-                    mainData.data.id &&
-                    format.getDataForCards()
-                  }
-                ></DietCount>
-              </aside>
-            </div>
-          </StyledMain>
-        )}
-      </div>
-    );
+                  ></DietCount>
+                </aside>
+              </div>
+            </StyledMain>
+          )}
+        </div>
+      );
+    }
   }
 };
 

@@ -14,8 +14,8 @@ export const useFetch = (id) => {
 
   useEffect(() => {
     (async () => {
-      // setError(false);
-      setLoading(true);
+      setError(false);
+      // setLoading(true);
       try {
         const result = await axios.get(`http://localhost:3000/user/${id}`);
         const result2 = await axios.get(
@@ -32,6 +32,7 @@ export const useFetch = (id) => {
         setActivityData(result3.data);
         setPerformanceData(result4.data);
       } catch (error) {
+        setLoading(false);
         setError(true);
         console.error('error true');
       }

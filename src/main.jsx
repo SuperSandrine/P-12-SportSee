@@ -8,8 +8,11 @@ import ErrorPage from './Pages/Error/Error';
 
 import './styles/index.css';
 
-// choix de createBrowserRouter pour gérer une API
-// tuto: https://reactrouter.com/en/main/start/tutorial#the-root-route
+/**
+ * Router chosen: createBrowserRouter, specifically able to deal with API loader and fetcher
+ * tuto: https://reactrouter.com/en/main/start/tutorial#the-root-route
+ * Reroute to ErrorPage in need.
+ */
 
 const router = createBrowserRouter([
   {
@@ -26,7 +29,6 @@ const router = createBrowserRouter([
     path: '/profile/:id',
     element: <Dashboard mocked={false} />,
     errorElement: <ErrorPage />,
-    //loader: dashboardLoader,
   },
   {
     path: '/profileMocked/:id',
@@ -35,6 +37,7 @@ const router = createBrowserRouter([
   },
 ]);
 
+/** Render the app */
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <RouterProvider router={router} />
