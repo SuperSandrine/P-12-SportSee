@@ -55,19 +55,84 @@ SportSee launch a new version of its user profile page. The user can now follow 
 
 ## Getting start
 
+This repo contains all the front-end code to run the sports analytics dashboard SportSee. Also, you'll need to clone the back-end repo, but everything is explained in this Getting start.
+
 ### Prerequisites
+
+- ![Node][NodeBadge]
+- ![Npm][NpmBadge]
+- ![Yarn][YarnBadge]
 
 The project uses yarn package management, check that Yarn is installed by running:
 
+```sh
 yarn --version
+```
 
-If not, you can install yarn through npm package manager
+If not, you can install yarn through npm package manager, please refer to the [yarn documentation](https://classic.yarnpkg.com/en/docs/getting-started)
 
-npm install --global yarn
+### Back-end
 
-## Front-end
+Once you have checked your management package, you can get the Back-end first:
 
-## Back-end
+The back is a micro API from [here](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard)
+
+1. Fork the repository
+2. Clone it on your computer
+
+```sh
+git clone https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard.git
+```
+
+3. Install the dependencies with :
+
+```sh
+ yarn install
+```
+
+4. Run the micro Api with :
+
+```sh
+yarn run dev
+```
+
+Wait few seconds and you should see:
+`
+Magic happends on port 3000
+``
+
+### Front-end
+
+Once you have your Backend running, you can:
+
+1. Clone the repo on your computer, in the parent folder of the back (as specified in the structure part)
+
+```sh
+git clone https://github.com/SuperSandrine/P-12-SportSee.git
+```
+
+2. Install the dependencies with:
+
+```sh
+ yarn install
+```
+
+3. Run the front:
+
+```sh
+yarn run dev
+```
+
+Wait for a second and you should see:
+`
+VITE v4.1.3 ready in 289 ms
+
+➜ Local: http://127.0.0.1:5175/
+➜ Network: use --host to expose
+➜ press h to show help
+`
+
+Now, back and front are connected, enjoy.
 
 ## Techniques:
 
@@ -127,8 +192,8 @@ Voilà le résultat sur mon repository :
 [RechartsBadge]: https://img.shields.io/badge/Library-Recharts-mediumturquoise
 [VisualStudioBadge]: https://img.shields.io/badge/IDE-VisualStudio-blueviolet
 [ViteBadge]: https://img.shields.io/badge/Frontend%20Tooling-Vite-orchid
-[NodeBadge]: https://img.shields.io/Node/v/14.21.1
-[NpmBadge]: https://img.shields.io/Npm/v/6.14.17
-[YarnBadge]: https://img.shields.io/Yarn/v/1.22.19
+[NodeBadge]: https://img.shields.io/badge/Node-v%2014.21.1
+[NpmBadge]: https://img.shields.io/badge/Npm-v%206.14.17
+[YarnBadge]: https://img.shields.io/badge/Yarn-v%201.22.19
 
 https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white
