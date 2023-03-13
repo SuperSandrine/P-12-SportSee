@@ -129,7 +129,7 @@ class FormatData extends React.Component {
     Object.entries(arrangedMainData).forEach(([name, value]) => {
       mainDataRestructured.push({ name, value });
     });
-    console.log(mainDataRestructured);
+    //console.log(mainDataRestructured);
     return mainDataRestructured;
   }
 }

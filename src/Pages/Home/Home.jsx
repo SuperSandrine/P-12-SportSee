@@ -4,7 +4,10 @@ import Navbar from '../../Components/Navbar/Navbar';
 
 import { StyledDiv } from './StyledDiv';
 import { StyledMain } from '../Dashboard/StyledMain';
-
+/**
+ * Display a home page
+ * @return {JSX.Element}
+ */
 const Home = () => {
   return (
     <div>

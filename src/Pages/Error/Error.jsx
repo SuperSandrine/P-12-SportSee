@@ -1,6 +1,10 @@
 import { useRouteError } from 'react-router-dom';
 import Navbar from '../../Components/Navbar/Navbar';
 
+/**
+ * Display an error page when it's needed (through router)
+ * @returns {JSX.Element}
+ */
 export default function ErrorPage() {
   const error = useRouteError();
   console.error(error);

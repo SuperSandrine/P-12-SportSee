@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 /**
  * Custom hook to fetch data from an API.
  * @param {string} id
- * @return {Promise<{mainData:array, activityData:array, averageSessionsData:array, performanceData:array, error:bool, loading:bool}[]>}
+ * @return {Promise.resolve<{mainData:array, activityData:array, averageSessionsData:array, performanceData:array, error:bool, loading:bool}[]>|Promise.reject<Error>} 4 different arrays or an error
  */
 export const useFetch = (id) => {
   const [mainData, setMainData] = useState([]);
@@ -40,6 +40,7 @@ export const useFetch = (id) => {
         setLoading(false);
         setError(true);
         console.error('error true');
+        //TODO: comment envoyer la route de la page d'erreur?
       }
       setLoading(false);
     })();

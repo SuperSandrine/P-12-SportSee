@@ -13,7 +13,6 @@ import './styles/index.css';
  * tuto: https://reactrouter.com/en/main/start/tutorial#the-root-route
  * Reroute to ErrorPage in need.
  */
-
 const router = createBrowserRouter([
   {
     path: '/',

@@ -16,61 +16,39 @@ import DietCount from '../../Components/DietCount/DietCount';
 
 import { StyledMain } from './StyledMain';
 
-// dashboard récupère le paramètre et la donnée mockée
-// ensuite affichage conditionnelle
-// TODO : sortir les fonction dans d'autres fichier pour n'avoir que l'affichage ?
+/**
+ * Display components in the profile page through "mocked" condition from props.
+ * @param {boolean} props
+ * @return {JSX.Element}
+ */
 const Dashboard = (props) => {
+  //console.log('props', props);
   const paramsId = useParams();
   const userId = paramsId.id;
-  let firstName,
-    dailyActivitiesData,
-    averageSessionData,
-    webPerformanceData,
-    dietCountData,
-    scoreData;
 
   if (props.mocked === true) {
-    //console.log("****C'est bien mocké !!! ****");
-    //console.log('data mockée', DATA);
     const format = new FormatData(DATA);
-    firstName = format.getFirstNameFromData(userId);
-
-    //console.log('instanciation', format);
-    dailyActivitiesData = format.getDataForBarcharts(userId);
-    //console.log('methode1', dailyActivitiesData);
-
-    averageSessionData = format.getDataForLineChart(userId);
-    //console.log('methode2', averageSessionData);
-
-    webPerformanceData = format.getDataForRadarChart(userId);
-    //console.log('methode3', webPerformanceData);
-
-    scoreData = format.getDataForRadialChart(userId);
-    //console.log('méthode4', scoreData);
-
-    dietCountData = format.getDataForCards(userId);
-
     return (
       <div>
         <Navbar />
         <StyledMain>
           <h1>
-            Bonjour <span>{firstName}</span>
+            Bonjour <span>{format.getFirstNameFromData(userId)}</span>
           </h1>
           <p className="welcomeSentence">
             Félicitations ! Vous avez explosé vos objectifs hier 👏
           </p>
           <div className="mainGraphs">
             <article className="mainGraphsBoxes">
-              <DailyActivities data={dailyActivitiesData} />
+              <DailyActivities data={format.getDataForBarcharts(userId)} />
               <section className="mainGraphsBoxesSection">
-                <AverageSession data={averageSessionData} />
-                <WebPerformance data={webPerformanceData} />
-                <Score data={scoreData} />
+                <AverageSession data={format.getDataForLineChart(userId)} />
+                <WebPerformance data={format.getDataForRadarChart(userId)} />
+                <Score data={format.getDataForRadialChart(userId)} />
               </section>
             </article>
             <aside>
-              <DietCount data={dietCountData}></DietCount>
+              <DietCount data={format.getDataForCards(userId)}></DietCount>
             </aside>
           </div>
         </StyledMain>
@@ -85,15 +63,15 @@ const Dashboard = (props) => {
       error,
       loading,
     ] = useFetch(userId);
-    console.log('maindata dans dash', mainData);
+    //console.log('maindata dans dash', mainData);
 
-    const azerty = new Object();
-    azerty.USER_MAIN_DATA = mainData;
-    azerty.USER_ACTIVITY = activityData;
-    azerty.USER_AVERAGE_SESSIONS = averageSessionsData;
-    azerty.USER_PERFORMANCE = performanceData;
+    const allAPIDataObject = new Object();
+    allAPIDataObject.USER_MAIN_DATA = mainData;
+    allAPIDataObject.USER_ACTIVITY = activityData;
+    allAPIDataObject.USER_AVERAGE_SESSIONS = averageSessionsData;
+    allAPIDataObject.USER_PERFORMANCE = performanceData;
 
-    const format = new FormatData(azerty);
+    const format = new FormatData(allAPIDataObject);
     if (loading) {
       return <p>En chargement, patienter quelques instants</p>;
     } else {
@@ -140,25 +118,16 @@ const Dashboard = (props) => {
                     />
                     <WebPerformance
                       data={
-                        // loading ? (
-                        //   <p>Loading ...</p>
-                        // ) : (
-
                         performanceData &&
                         performanceData.data &&
                         performanceData.data.userId &&
                         format.getDataForRadarChart()
-                        // console.log(
-                        //   'performanceData',
-                        //   performanceData.data.data[0]
-                        //)
-                        //)
                       }
                     />
                     {/* FRANCOIS: étrange, j'ai rajouté le loading ici sinon même avec la vérification de la data, il y avait un niveau de data pas suffisant pour permettre au composant de fonctionner (surement parce que je divise la data au niveau du compasant et non au niveau du get) 
                   L'erreur path vient d'ici
                   L'erreur path apparait avant que la donnée soit chargée, une fois chargée, pas de roblème.
-                  Comment obliger se composant à attendre la data avant de travailler, pourquoi ce composant travaille en avance par rapport au autres?*/}
+                  Comment obliger se composant à attendre la data avant de travailler, pourquoi ce composant travaille en avance par rapport aux autres?*/}
                     <Score
                       data={
                         mainData &&
