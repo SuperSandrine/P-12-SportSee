@@ -36,13 +36,34 @@ SportSee launch a new version of its user profile page. The user can now follow 
 
 ## General information
 
+### Built with
+
+- [![Vite in a badge][ViteBadge]](https://vitejs.dev/)
+- ![React in a badge][ReactBadge]
+- ![Recharts in badge][RechartsBadge]
+- ![ VS in a badge][VisualStudioBadge]
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ### Technologies
+
+- ![Node][NodeBadge]
+- ![Npm][NpmBadge]
+- ![Yarn][YarnBadge]
 
 ### Naming conventions
 
 ## Getting start
 
 ### Prerequisites
+
+The project uses yarn package management, check that Yarn is installed by running:
+
+yarn --version
+
+If not, you can install yarn through npm package manager
+
+npm install --global yarn
 
 ## Front-end
 
@@ -52,8 +73,7 @@ SportSee launch a new version of its user profile page. The user can now follow 
 
 ## Author
 
-(![author][MeBadge])
-[![author][MeBadge]]
+![author][MeBadge]
 
 Utilisation du package manager : yarn
 Pour démarrage du projet utilisation de: Vite
@@ -65,7 +85,9 @@ Pour modélisation des données: Utilisation de recharts
 
 yan run dev pour lancer le site sur http://localhost:5173/
 
-[![forthebadge](https://forthebadge.com/images/badges/cc-0.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/uses-css.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/cc-0.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/uses-css.svg)](https://forthebadge.com)
 
 # Sleep Well : the smart alarm-clock app
 
@@ -98,8 +120,15 @@ Voilà le résultat sur mon repository :
 <!-- MARKDOWN LINKS & IMAGES -->
 
 [MeBadge]: https://img.shields.io/badge/Author-Sandrine%20Mestas-blue?style=for-the-badge
-[JsBadge]: https://img.shields.io/badge/language-JavaScript-yellow
-[CssBadge]: https://img.shields.io/badge/language-css-blue
-[HtmlBadge]: https://img.shields.io/badge/language-html-orange
-[ReactBadge]: https://img.shields.io/badge/Library-React-blue
-[RechartsBadge]: https://img.shields.io/badge/Library-recharts-blue
+[JsBadge]: https://img.shields.io/badge/Language-JavaScript-yellow
+[CssBadge]: https://img.shields.io/badge/Language-css-blue
+[HtmlBadge]: https://img.shields.io/badge/Language-html-orange
+[ReactBadge]: https://img.shields.io/badge/Library-React-lightblue
+[RechartsBadge]: https://img.shields.io/badge/Library-Recharts-mediumturquoise
+[VisualStudioBadge]: https://img.shields.io/badge/IDE-VisualStudio-blueviolet
+[ViteBadge]: https://img.shields.io/badge/Frontend%20Tooling-Vite-orchid
+[NodeBadge]: https://img.shields.io/Node/v/14.21.1
+[NpmBadge]: https://img.shields.io/Npm/v/6.14.17
+[YarnBadge]: https://img.shields.io/Yarn/v/1.22.19
+
+https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white
