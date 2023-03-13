@@ -37,3 +37,4 @@ formatNumberInDay.propTypes = {
   value: PropTypes.number,
 };
 // FranCOIS: est-ce que dans le cas d'une fonction, on met des propType ou juste un composant?
+// Même fonctionnement pour formatKindNumberInName

@@ -3,6 +3,11 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
+/**
+ * Custom hook to fetch data from an API.
+ * @param {string} id
+ * @return {Promise<{mainData:array, activityData:array, averageSessionsData:array, performanceData:array, error:bool, loading:bool}[]>}
+ */
 export const useFetch = (id) => {
   const [mainData, setMainData] = useState([]);
   const [activityData, setActivityData] = useState([]);

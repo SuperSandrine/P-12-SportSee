@@ -2,17 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 /**
- * Tooltip: addionnal information appear on mouse entering Line chart.
- * Information is the value of Y according the place of the mouse in chart
+ * Tooltip: additionnal informations appear on mouse entering Line chart.
+ *  * It's a dynamic card appearing on hover
  * @param {boolean} active
  * @param {array} payload
  * @param {label} string
- * @return {JSX.ElementElement}
+ * @return {JSX.Element}
  */
 export const CustomContentTooltipLinechart = ({ active, payload, label }) => {
+  //console.log('customtooltipline', payload);
   if (active && payload && payload.length) {
-    //console.log('PAYLOAD', payload[0].value);
-    //console.log('Label', typeof label);
     return (
       <div
         //className="custom-tooltip"

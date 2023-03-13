@@ -1,12 +1,17 @@
 import React from 'react';
-
 import PropTypes from 'prop-types';
 
+/**
+ * Tooltip: additionnal informations appear on mouse entering Barchart.
+ * It's a dynamic card appearing on hover
+ * @param {boolean} active
+ * @param {array} payload
+ * @param {label} string
+ * @return {JSX.ElementElement}
+ */
 const CustomTooltipBarchart = ({ active, payload, label }) => {
   //console.log('customtooltipbar', payload);
   if (active && payload && payload.length) {
-    //console.log('PAYLOAD', payload);
-    console.log('Label', label);
     return (
       <div
         style={{
@@ -25,7 +30,6 @@ const CustomTooltipBarchart = ({ active, payload, label }) => {
       </div>
     );
   }
-
   return null;
 };
 

@@ -12,7 +12,7 @@ export const StyledMain = styled.main`
   .welcomeSentence {
     font-weight: 400;
     font-size: 18px;
-    padding: 30px 0 70px 0;
+    padding: 2.93vh 0 6.84vh 0;
   }
   .mainGraphs {
     // width: 82.78vw;

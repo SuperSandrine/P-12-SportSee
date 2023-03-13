@@ -85,6 +85,7 @@ const Dashboard = (props) => {
       error,
       loading,
     ] = useFetch(userId);
+    console.log('maindata dans dash', mainData);
 
     const azerty = new Object();
     azerty.USER_MAIN_DATA = mainData;

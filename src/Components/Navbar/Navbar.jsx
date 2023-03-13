@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { ButtonVerticalNavBar } from './ButtonVerticalNav';
-
 import { StyledNav, StyledVerticalUl, StyledLink } from './StyledComponents';
 
 import logo from './../../assets/sportsee-logo.svg';
@@ -10,6 +9,10 @@ import ride from './../../assets/Vectorride.svg';
 import swim from './../../assets/Vectorswim.svg';
 import work from './../../assets/Vectorwork.svg';
 
+/**
+ * Component creates vertical and horizontal Navbar.
+ * @returns {JSX.Element}
+ */
 const Navbar = () => {
   return (
     <header>
@@ -25,7 +28,7 @@ const Navbar = () => {
       <StyledVerticalUl>
         <li>
           <ul>
-            <ButtonVerticalNavBar picture={yogi} alt="yoga " />
+            <ButtonVerticalNavBar picture={yogi} alt="yoga" />
             <ButtonVerticalNavBar picture={swim} alt="natation" />
             <ButtonVerticalNavBar picture={ride} alt="vélo" />
             <ButtonVerticalNavBar picture={work} alt="workout" />

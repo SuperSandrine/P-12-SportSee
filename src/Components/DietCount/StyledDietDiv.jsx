@@ -7,7 +7,7 @@ export const StyledDietDiv = styled.div`
   height: 100%;
   figure {
     display: flex;
-    width: 17.92vw;
+    max-width: 20vw;
     background-color: #fbfbfb;
     padding: 2.22vw;
     border-radius: 5px;

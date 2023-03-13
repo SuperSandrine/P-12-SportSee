@@ -5,8 +5,9 @@ export const StyledNav = styled.nav`
   display: flex;
   background-color: black;
   justify-content: space-between;
+  padding: 0 4.4vw 0 1.5vw;
   align-items: center;
-  padding: 19px 60px 14px 29px;
+  height: 8.89vh;
   width: 100%;
   position: relative;
 `;
@@ -18,7 +19,7 @@ export const StyledLink = styled(Link)`
 `;
 export const StyledVerticalUl = styled.ul`
   width: 8.13vw;
-  height: calc(100vh - 85px);
+  height: 100vh;
   display: flex;
   display: flex;
   flex-direction: column;
@@ -26,7 +27,6 @@ export const StyledVerticalUl = styled.ul`
   justify-content: space-evenly;
   align-items: center;
   position: absolute;
-  top: 90px;
   left: 0;
   li {
     ul {

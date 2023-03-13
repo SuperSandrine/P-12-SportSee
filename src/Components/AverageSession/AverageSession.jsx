@@ -12,12 +12,9 @@ import { CustomContentTooltipLinechart } from './CustomContentTooltipLinechart';
 import { CustomCursorTooltopLinechart } from './CustomCursorTooltipLinechart';
 import { formatNumberInDay } from './formatNumberInDay';
 
-// donnée dans averageSession/index/sessions
-// #US12 : En tant qu’utilisateur, je veux voir ma durée moyenne des sessions sous la forme d’un LineChart. L’axe des abscisses correspond à la durée moyenne des sessions. Un tooltip apparaît au survol.
-
 /**
  * Display in a Linechart the average sport session lenght in a day accross a week. A tooltip appears on mouse hover.
- * @param {Object} props
+ * @param {object} props
  * @param {{day: number, sessionLength:number}[]} props.data data to be displayed according rechart format https://recharts.org/en-US/api/LineChart
  * @return {JSX.Element} a graph from rechart library
  */
@@ -53,7 +50,7 @@ const AverageSession = (props) => {
           dataKey="day"
           tickLine={false}
           axisLine={false}
-          tick={{ fill: '#FFFFFF', fontSize: '1rem', opacity: '0.5' }}
+          tick={{ fill: '#FFFFFF', fontSize: '12px', opacity: '0.5' }}
           tickFormatter={formatNumberInDay}
         />
         <YAxis

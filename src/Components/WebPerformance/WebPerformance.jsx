@@ -1,46 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ResponsiveContainer } from 'recharts';
-import {
-  Legend,
-  PolarAngleAxis,
-  PolarGrid,
-  PolarRadiusAxis,
-  Radar,
-  RadarChart,
-} from 'recharts';
-// donnée dans performance/index/data et kind
-// #US13 : En tant qu’utilisateur, je veux voir mon type d’activité réalisée sous forme d’un radar chart.
+import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from 'recharts';
 
+import { formatKindNumberInName } from './formatKindNumberInName';
+
+/**
+ * Display in a Radarchart the performance value in activity kind.
+ * @param {object} props
+ * @param {{value:number, kind:number}[]} props.data data to be displayed according rechart format https://recharts.org/en-US/api/RadarChart
+ * @return {JSX.Element} a graph from rechart library
+ */
 const WebPerformance = (props) => {
   //console.log('props dans webPerformance', props);
   const dataWP = props.data;
-  console.log('dataWP', dataWP);
-  //const dataKindWP = props.data.kind;
-  //console.log('dataKindWP', dataKindWP[4]);
-
-  const formatEngToFrKind = (value) => {
-    //console.log('VALUE', value);
-    //return dataKindWP[value];
-
-    //console.log('TYPE VALUE', typeof value);
-    switch (value) {
-      case 1:
-        return 'Cardio';
-      case 2:
-        return 'Énergie';
-      case 3:
-        return 'Endurance';
-      case 4:
-        return 'Force';
-      case 5:
-        return 'Vitesse';
-      case 6:
-        return 'Intensité';
-      default:
-        console.log('Vérifier la donnée kind dans performance');
-    }
-  };
 
   return (
     <ResponsiveContainer aspect="0.98">
@@ -49,36 +22,20 @@ const WebPerformance = (props) => {
         height={263}
         outerRadius="78%"
         data={dataWP}
-        style={{ backgroundColor: ' #282D30' }}
+        style={{ backgroundColor: ' #282D30', borderRadius: '5px' }}
         margin={{ top: 25, right: 30, left: 30, bottom: 25 }}
-        //radius={[5, 5, 5, 5]} // TODO: ça marche pas
-        // startAngle={30}
-        // endAngle={-330}
         startAngle={30}
         endAngle={390}
       >
         <PolarGrid stroke="white" gridType="polygon" radialLines={false} />
         <PolarAngleAxis
           dataKey="kind"
-          tickFormatter={formatEngToFrKind}
-          // TODO = récupérer le code kind et aller cherche le nom dans kind
+          tickFormatter={formatKindNumberInName}
           axisLine={false}
-          tick={{ fill: 'white', fontSize: '1.1rem', padding: '5px' }}
-          //radius={20}
-          //axisLineType="circle" //tickLine={false}
-          //tick={false} // les identifiants des chiffres // gère le titre des lignes qui tiennent la toile
+          tick={{ fill: 'white', fontSize: '12px', padding: '5px' }}
           //TODO: comment espacer les mots du cercle, (endurance)
         />
-        {/* <PolarRadiusAxis
-          angle={30}
-          domain={[0, 300]} //affiche les valeurs des lignes concentriques 
-        />*/}
-        <Radar
-          dataKey="value"
-          //stroke="#FF0101"
-          fill="#FF0101"
-          fillOpacity={0.7}
-        />
+        <Radar dataKey="value" fill="#FF0101" fillOpacity={0.7} />
       </RadarChart>
     </ResponsiveContainer>
   );
