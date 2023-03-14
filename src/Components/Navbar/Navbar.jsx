@@ -46,6 +46,7 @@ const Navbar = () => {
               transform: 'rotate(-90deg)',
               whiteSpace: 'nowrap',
               width: 'fit-content',
+              fontSize: '1.17vh',
             }}
           >
             Copyright, SportSee 2020

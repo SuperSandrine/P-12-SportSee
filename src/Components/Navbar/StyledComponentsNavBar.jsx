@@ -16,6 +16,9 @@ export const StyledLink = styled(Link)`
   text-decoration: none;
   background-color: black;
   font-size: 2.34vh;
+  img {
+    width: 13vw;
+  }
 `;
 export const StyledVerticalUl = styled.ul`
   width: 8.13vw;

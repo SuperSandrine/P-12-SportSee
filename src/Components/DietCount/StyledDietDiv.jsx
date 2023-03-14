@@ -9,8 +9,11 @@ export const StyledDietDiv = styled.div`
     display: flex;
     max-width: 20vw;
     background-color: #fbfbfb;
-    padding: 2.22vw;
+    padding: 3vh;
     border-radius: 5px;
+    img {
+      height: 5.87vh;
+    }
     article {
       padding-left: 1.67vw;
       display: flex;
