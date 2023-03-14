@@ -1,4 +1,3 @@
-// récupérer la data mocked
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
@@ -6,7 +5,7 @@ import PropTypes from 'prop-types';
 /**
  * Custom hook to fetch data from an API.
  * @param {string} id
- * @return {Promise.resolve<{mainData:array, activityData:array, averageSessionsData:array, performanceData:array, error:bool, loading:bool}[]>|Promise.reject<Error>} 4 different arrays or an error
+ * @return {Promise.resolve<{mainData:array, activityData:array, averageSessionsData:array, performanceData:array, hasError:bool, isLoading:bool}[]>|Promise.reject<Error>} 4 different arrays or an error
  */
 export const useFetch = (id) => {
   const [mainData, setMainData] = useState([]);
@@ -14,13 +13,12 @@ export const useFetch = (id) => {
   const [averageSessionsData, setAverageSessionsData] = useState([]);
   const [performanceData, setPerformanceData] = useState([]);
 
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [hasError, setError] = useState(false);
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
       setError(false);
-      // setLoading(true);
       try {
         const result = await axios.get(`http://localhost:3000/user/${id}`);
         const result2 = await axios.get(
@@ -51,8 +49,8 @@ export const useFetch = (id) => {
     activityData,
     averageSessionsData,
     performanceData,
-    error,
-    loading,
+    hasError,
+    isLoading,
   ];
 };
 

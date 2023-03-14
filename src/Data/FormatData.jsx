@@ -110,7 +110,7 @@ class FormatData extends React.Component {
   }
 
   /**
-   * Restructure the data {object} (data mocked or data from api) in an array with new keys.
+   * Restructure the data {object} (mocked data or data from api) in an array with new keys.
    * @param {string} [id]
    * @return {{name:string, value:number }[]}
    */

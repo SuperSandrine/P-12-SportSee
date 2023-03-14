@@ -26,12 +26,12 @@ const router = createBrowserRouter([
   },
   {
     path: '/profile/:id',
-    element: <Dashboard mocked={false} />,
+    element: <Dashboard isMocked={false} />,
     errorElement: <ErrorPage />,
   },
   {
     path: '/profileMocked/:id',
-    element: <Dashboard mocked={true} />,
+    element: <Dashboard isMocked={true} />,
     errorElement: <ErrorPage />,
   },
 ]);

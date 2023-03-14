@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 
 import DATA from '../../../mockedData.js';
-import { useFetch } from '../../Data/GetData.jsx';
+import { useFetch } from '../../Data/useFetch.jsx';
 import FormatData from '../../Data/FormatData';
 
 import Navbar from '../../Components/Navbar/Navbar';
@@ -17,7 +17,7 @@ import DietCount from '../../Components/DietCount/DietCount';
 import { StyledMain } from './StyledMain';
 
 /**
- * Display components in the profile page through "mocked" condition from props.
+ * Display components in the profile page through "isMocked" condition from props.
  * @param {boolean} props
  * @return {JSX.Element}
  */
@@ -26,7 +26,7 @@ const Dashboard = (props) => {
   const paramsId = useParams();
   const userId = paramsId.id;
 
-  if (props.mocked === true) {
+  if (props.isMocked === true) {
     const format = new FormatData(DATA);
     return (
       <div>
@@ -158,7 +158,7 @@ const Dashboard = (props) => {
 };
 
 Dashboard.propTypes = {
-  mocked: PropTypes.bool,
+  isMocked: PropTypes.bool,
 };
 
 export default Dashboard;
