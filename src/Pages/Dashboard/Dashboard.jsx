@@ -124,7 +124,7 @@ const Dashboard = (props) => {
                         format.getDataForRadarChart()
                       }
                     />
-                    {/* FRANCOIS: étrange, j'ai rajouté le loading ici sinon même avec la vérification de la data, il y avait un niveau de data pas suffisant pour permettre au composant de fonctionner (surement parce que je divise la data au niveau du compasant et non au niveau du get) 
+                    {/* TODO = FRANCOIS: étrange, j'ai rajouté le loading ici sinon même avec la vérification de la data, il y avait un niveau de data pas suffisant pour permettre au composant de fonctionner (surement parce que je divise la data au niveau du compasant et non au niveau du get) 
                   L'erreur path vient d'ici
                   L'erreur path apparait avant que la donnée soit chargée, une fois chargée, pas de roblème.
                   Comment obliger se composant à attendre la data avant de travailler, pourquoi ce composant travaille en avance par rapport aux autres?*/}

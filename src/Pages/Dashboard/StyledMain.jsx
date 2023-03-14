@@ -4,14 +4,14 @@ export const StyledMain = styled.main`
   padding-left: 15.5vw;
   padding-top: 6.4vh;
   h1 {
-    font-size: 48px;
+    font-size: 4.69vh;
     span {
       color: red;
     }
   }
   .welcomeSentence {
     font-weight: 400;
-    font-size: 18px;
+    font-size: 1.76vh;
     padding: 2.93vh 0 6.84vh 0;
   }
   .mainGraphs {

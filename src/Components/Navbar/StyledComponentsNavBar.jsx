@@ -15,11 +15,11 @@ export const StyledLink = styled(Link)`
   color: white;
   text-decoration: none;
   background-color: black;
-  font-size: 24px;
+  font-size: 2.34vh;
 `;
 export const StyledVerticalUl = styled.ul`
   width: 8.13vw;
-  height: 100vh;
+  height: calc(100vh - 8.89vh);
   display: flex;
   display: flex;
   flex-direction: column;
@@ -32,7 +32,7 @@ export const StyledVerticalUl = styled.ul`
     ul {
       display: flex;
       flex-direction: column;
-      row-gap: 20px;
+      row-gap: 1.95vh;
     }
   }
 `;

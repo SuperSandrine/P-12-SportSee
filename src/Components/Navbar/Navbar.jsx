@@ -1,7 +1,11 @@
 import React from 'react';
 
 import { ButtonVerticalNavBar } from './ButtonVerticalNav';
-import { StyledNav, StyledVerticalUl, StyledLink } from './StyledComponents';
+import {
+  StyledNav,
+  StyledVerticalUl,
+  StyledLink,
+} from './StyledComponentsNavBar';
 
 import logo from './../../assets/sportsee-logo.svg';
 import yogi from './../../assets/Groupyogi.svg';

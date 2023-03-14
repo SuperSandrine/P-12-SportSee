@@ -31,8 +31,8 @@ const DailyActivities = (props) => {
     const day = parseInt(cut[2]);
     return day;
   };
-  //FRANCOIS: est-ce que je sors cette fonction de ce composant pour la mettre dans un fichier spécial
-  // FRANcOIS: est-ce que cette fonction doit avoir une JSdoc
+  //TODO = FRANCOIS: est-ce que je sors cette fonction de ce composant pour la mettre dans un fichier spécial
+  // TODO = FRANcOIS: est-ce que cette fonction doit avoir une JSdoc
 
   return (
     <ResponsiveContainer
@@ -53,7 +53,7 @@ const DailyActivities = (props) => {
           y={38}
           fill="#20253A"
           dominantBaseline="central"
-          fontSize={'15px'}
+          fontSize={'1.46vh'}
         >
           <tspan>Activité quotidienne</tspan>
         </text>
@@ -84,7 +84,7 @@ const DailyActivities = (props) => {
           tickLine={false}
           axisLine={false}
           tickFormatter={formatDate}
-          tick={{ fill: '#9B9EAC', fontSize: '14px' }}
+          tick={{ fill: '#9B9EAC', fontSize: '1.37vh' }}
           dy={15} // move the text from the tick line
         />
         <YAxis
@@ -101,7 +101,7 @@ const DailyActivities = (props) => {
           domain={['dataMin - 2', 'dataMax + 2']}
           tickLine={false}
           axisLine={false}
-          tick={{ fill: '#9B9EAC', fontSize: '14px' }}
+          tick={{ fill: '#9B9EAC', fontSize: '1.37vh' }}
           dx={15} // move the text from the tick line
         />
 
@@ -121,7 +121,7 @@ const DailyActivities = (props) => {
           iconType="circle"
           iconSize={8}
           height={36}
-          wrapperStyle={{ fontSize: '14px' }}
+          wrapperStyle={{ fontSize: '1.37vh' }}
           formatter={(value, entry, index) => (
             <span
               className="text-color-class"

@@ -116,7 +116,7 @@ If not, you can install yarn through npm package manager, please refer to the [y
 
 ### Back-end
 
-Once you're package management is settled, you can get and run the Back-end first:
+Once you're package management is settled, then you can get and run the Back-end:
 
 The back is a micro API from [here](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard)
 
@@ -130,7 +130,7 @@ git clone https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboar
 3. Install the dependencies with :
 
 ```sh
- yarn install
+yarn install
 ```
 
 4. Run the micro Api with :
@@ -157,7 +157,7 @@ git clone https://github.com/SuperSandrine/P-12-SportSee.git
 2. Install the dependencies with:
 
 ```sh
- yarn install
+yarn install
 ```
 
 3. Run the front:
@@ -168,13 +168,17 @@ yarn run dev
 
 Wait for a second and you should see:
 
-`VITE v4.1.3 ready in 289 ms
+````VITE v4.1.3 ready in 289 ms
 ➜ Local: http://127.0.0.1:5173/
 ➜ Network: use --host to expose
-➜ press h to show help`
+➜ press h to show help```
 
 If the navigator window did not open, your can use the link provide in your terminal at 'local', which is your local port.
-Now, back and front are connected, enjoy.
+
+Now, back and front are connected.
+Keep in mind that you have to run the back-end before the front-end to get the data fetched from back and displayed.
+
+<b>Enjoy !</b>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -194,8 +198,9 @@ Now, back and front are connected, enjoy.
 [RechartsBadge]: https://img.shields.io/badge/Library-Recharts-lightseagreen
 [VisualStudioBadge]: https://img.shields.io/badge/IDE-VisualStudio-steelblue
 [ViteBadge]: https://img.shields.io/badge/Frontend%20Tooling-Vite-orchid
-[GitBadge]: https://img.shields.io/badge/Versionning%20Git-orangered
-[GitHubBadge]: https://img.shields.io/badge/Versionning%20GitHub-black
+[GitBadge]: https://img.shields.io/badge/Versionning-Git-orangered
+[GitHubBadge]: https://img.shields.io/badge/Versionning-GitHub-black
 [NodeBadge]: https://img.shields.io/badge/Node-v%2014.21.1-forestgreen
 [NpmBadge]: https://img.shields.io/badge/Npm-v%206.14.17-firebrick
 [YarnBadge]: https://img.shields.io/badge/Yarn-v%201.22.19-steelblue
+````

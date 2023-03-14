@@ -20,7 +20,7 @@ export const CustomContentTooltipLinechart = ({ active, payload, label }) => {
           border: 'none',
           padding: '0.6vw',
           paddingTop: '0.8vw',
-          fontSize: '0.8rem',
+          fontSize: '1.05vh',
           height: 'inherit',
         }}
       >

@@ -1,12 +1,7 @@
 @import './reset.css';
-/* //@import './import.css'; */
-/* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap'); */
-/* TODO =OK François, la police que j'importe après n'est pas prise en compte == j'ai imporété url dans le reset */
 
 * {
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
   box-sizing: border-box;
 }
-
-/* TODO sinon je peux faire un composant styleglobal à la racine du projet, voir cours OC */

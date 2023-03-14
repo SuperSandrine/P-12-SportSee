@@ -38,7 +38,7 @@ const AverageSession = (props) => {
             <stop offset="95%" stopColor="#FFFFFF" stopOpacity={1} />
           </linearGradient>
         </defs>
-        <text fill="#FFFFFF" opacity={0.5} fontSize={15}>
+        <text fill="#FFFFFF" opacity={0.5} fontSize={'1.46vh'}>
           <tspan x={22} y={28}>
             Durée moyenne des
           </tspan>
@@ -50,7 +50,7 @@ const AverageSession = (props) => {
           dataKey="day"
           tickLine={false}
           axisLine={false}
-          tick={{ fill: '#FFFFFF', fontSize: '12px', opacity: '0.5' }}
+          tick={{ fill: '#FFFFFF', fontSize: '1.17vh', opacity: '0.5' }}
           tickFormatter={formatNumberInDay}
         />
         <YAxis
@@ -86,7 +86,7 @@ const AverageSession = (props) => {
 AverageSession.propTypes = {
   data: PropTypes.array,
   //data:PropTypes.array.isRequired,
-  //FRANCOIS, j'aurai préféré mettre un isRequired, mais j'ai une erreur qui s'affiche le temps du chargement, comment ne pas avoir d'erreur et isrequired??
+  //TOdo = FRANCOIS, j'aurai préféré mettre un isRequired, mais j'ai une erreur qui s'affiche le temps du chargement, comment ne pas avoir d'erreur et isrequired??
 };
 
 export default AverageSession;

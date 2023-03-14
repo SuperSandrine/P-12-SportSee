@@ -18,9 +18,10 @@ const CustomTooltipBarchart = ({ active, payload, label }) => {
           color: 'white',
           backgroundColor: 'red',
           border: 'none',
+          outline: 'none',
           padding: '0.6vw',
-          fontSize: '0.8rem',
-          lineHeight: '24px',
+          fontSize: '1.05vh',
+          lineHeight: '2.34vh',
           textAlign: 'center',
           outline: 'none',
         }}

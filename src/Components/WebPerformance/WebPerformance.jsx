@@ -20,7 +20,7 @@ const WebPerformance = (props) => {
       <RadarChart
         width={258}
         height={263}
-        outerRadius="78%"
+        outerRadius="90%"
         data={dataWP}
         style={{ backgroundColor: ' #282D30', borderRadius: '5px' }}
         margin={{ top: 25, right: 30, left: 30, bottom: 25 }}
@@ -32,7 +32,11 @@ const WebPerformance = (props) => {
           dataKey="kind"
           tickFormatter={formatKindNumberInName}
           axisLine={false}
-          tick={{ fill: 'white', fontSize: '12px', padding: '5px' }}
+          tick={{
+            fill: 'white',
+            fontSize: '1.17vh',
+            padding: '5px',
+          }}
           //TODO: comment espacer les mots du cercle, (endurance)
         />
         <Radar dataKey="value" fill="#FF0101" fillOpacity={0.7} />

@@ -56,7 +56,7 @@ const Score = (props) => {
           dataKey="dataCatched"
           cornerRadius={5}
         />
-        <text fill="#20253A" fontSize={15}>
+        <text fill="#20253A" fontSize={'1.46vh'}>
           <tspan x={22} y={28}>
             Score
           </tspan>

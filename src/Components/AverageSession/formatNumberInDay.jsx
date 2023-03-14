@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
  * @return {string}
  */
 export const formatNumberInDay = (value) => {
-  //FRANCOIS, pourquoi quand je mets un console.log ici, il est publier bcp de fois dans la console,
-  //FRANCOIS, est-ce que un return dans switch c'est mal?
+  //TODO = FRANCOIS, pourquoi quand je mets un console.log ici, il est publier bcp de fois dans la console,
+  //TODO = FRANCOIS, est-ce que un return dans switch c'est mal?
   //console.log('VALUE', value);
   //console.log('TYPE VALUE', typeof value);
   switch (value) {
@@ -36,5 +36,5 @@ export const formatNumberInDay = (value) => {
 formatNumberInDay.propTypes = {
   value: PropTypes.number,
 };
-// FranCOIS: est-ce que dans le cas d'une fonction, on met des propType ou juste un composant?
+// TODO = FranCOIS: est-ce que dans le cas d'une fonction, on met des propType ou juste un composant?
 // Même fonctionnement pour formatKindNumberInName

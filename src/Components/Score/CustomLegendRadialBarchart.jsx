@@ -28,7 +28,7 @@ export const CustomLegendRadialBarchart = (props) => {
     >
       <p
         style={{
-          fontSize: '26px',
+          fontSize: '2.54vh',
           fontWeight: '700',
           color: '#282D30',
           textAlign: 'center',
@@ -38,13 +38,15 @@ export const CustomLegendRadialBarchart = (props) => {
       </p>
       <p
         style={{
-          fontSize: '16px',
+          fontSize: '1.56vh',
           fontWeight: '500',
           color: '#74798C',
           textAlign: 'center',
+          lineHeight: '2.34vh',
         }}
       >
-        de votre objectif
+        de votre
+        <br /> objectif
       </p>
     </div>
   );

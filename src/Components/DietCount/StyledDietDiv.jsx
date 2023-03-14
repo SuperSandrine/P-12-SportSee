@@ -12,19 +12,19 @@ export const StyledDietDiv = styled.div`
     padding: 2.22vw;
     border-radius: 5px;
     article {
-      padding-left: 24px;
+      padding-left: 1.67vw;
       display: flex;
       flex-direction: column;
       justify-content: center;
       p {
         font-weight: 700;
-        font-size: 20px;
-        line-height: 24px;
+        font-size: 1.95vh;
+        line-height: 2.34vh;
       }
       h3 {
-        font-size: 14px;
+        font-size: 1.37vh;
         color: #74798c;
-        line-height: 24px;
+        line-height: 2.43vh;
       }
     }
   }
