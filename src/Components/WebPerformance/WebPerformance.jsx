@@ -37,7 +37,6 @@ const WebPerformance = (props) => {
             fontSize: '1.17vh',
             padding: '5px',
           }}
-          //TODO: comment espacer les mots du cercle, (endurance)
         />
         <Radar dataKey="value" fill="#FF0101" fillOpacity={0.7} />
       </RadarChart>

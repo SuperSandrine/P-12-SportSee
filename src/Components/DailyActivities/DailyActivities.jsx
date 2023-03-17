@@ -31,8 +31,6 @@ const DailyActivities = (props) => {
     const day = parseInt(cut[2]);
     return day;
   };
-  //TODO = FRANCOIS: est-ce que je sors cette fonction de ce composant pour la mettre dans un fichier spécial
-  // TODO = FRANcOIS: est-ce que cette fonction doit avoir une JSdoc
 
   return (
     <ResponsiveContainer
@@ -73,12 +71,7 @@ const DailyActivities = (props) => {
           barSize={7}
           radius={[3.5, 3.5, 0, 0]}
         />
-        <CartesianGrid
-          strokeDasharray="3 3"
-          vertical={false}
-          x={4}
-          // TODO: faire correspondre les pointillés au poids
-        />
+        <CartesianGrid strokeDasharray="3 3" vertical={false} x={4} />
         <XAxis
           dataKey="day"
           tickLine={false}
@@ -113,7 +106,6 @@ const DailyActivities = (props) => {
             fill: 'rgba(196, 196, 196, 0.3)',
             strokeOpacity: 0.3,
           }}
-          // TODO: mettre le fond derrière
         />
         <Legend
           verticalAlign="top"

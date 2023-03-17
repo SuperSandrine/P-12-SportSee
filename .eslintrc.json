@@ -16,21 +16,9 @@
   },
   "plugins": ["react", "prettier"],
   "rules": {
-    // TODO: à effacer
-    //         Il existe 3 niveaux de paramétrage pour chaque règle:
-
-    // « off » ou 0 permet de désactiver une règle
-    // « warn » ou 1 donne un avertissement
-    // « error » ou 2 donne une erreur bloquante, soulignée en rouge dans votre IDE
-    // Ces règles, dont vous pourrez retrouver la liste ici, seront contrôlées dans toute votre codebase.
-
-    // Il est possible qu’à certains endroits de votre code vous souhaitiez permettre une entorse à la règle qu’ESlint tente d’imposer. Ajoutez en première ligne de votre fichier le code /* eslint-disable nom-de-la-regle */ pour désactiver une règle sur tout un fichier ou /* eslint-disable-next-line */ juste au-dessus de l’endroit où vous voulez faire taire ESlint si vous souhaitez un ciblage plus précis.
-
-    //"semi": [2, "always"], // François: pourquoi là il ne me les mets pas, et ci-dessous oui?
     "semi": ["error", "always"],
     // This rule enforces consistent use of semicolons.
     // https://eslint.org/docs/latest/rules/semi
     "indent": ["error", 2]
-    // TODO: quotes? https://eslint.org/docs/latest/rules/quotes
   }
 }

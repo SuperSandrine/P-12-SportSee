@@ -38,7 +38,6 @@ export const useFetch = (id) => {
         setLoading(false);
         setError(true);
         console.error('error true :', error);
-        //TODO: comment envoyer la route de la page d'erreur?
       }
       setLoading(false);
     })();

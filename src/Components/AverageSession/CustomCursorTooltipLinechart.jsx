@@ -26,7 +26,6 @@ export const CustomCursorTooltopLinechart = (props) => {
     />
   );
 };
-// Todo = FRANCOIS: est-ce qu'il faut faire les proptypes de customCursor?
 CustomCursorTooltopLinechart.propTypes = {
   height: PropTypes.number,
   width: PropTypes.number,

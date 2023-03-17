@@ -84,9 +84,7 @@ const AverageSession = (props) => {
 };
 
 AverageSession.propTypes = {
-  data: PropTypes.array,
-  //data:PropTypes.array.isRequired,
-  //TOdo = FRANCOIS, j'aurai préféré mettre un isRequired, mais j'ai une erreur qui s'affiche le temps du chargement, comment ne pas avoir d'erreur et isrequired??
+  data: PropTypes.array.isRequired,
 };
 
 export default AverageSession;
