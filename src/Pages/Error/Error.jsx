@@ -7,7 +7,7 @@ import Navbar from '../../Components/Navbar/Navbar';
  */
 export default function ErrorPage() {
   const error = useRouteError();
-  console.error(error);
+  console.error('il y a une erreur', error);
 
   return (
     <div id="error-page">

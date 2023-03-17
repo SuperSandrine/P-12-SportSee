@@ -1,35 +1,37 @@
-const USER_MAIN_DATA = [
-  {
-    id: 12,
-    userInfos: {
-      firstName: 'MockedKarl',
-      lastName: 'MockedDovineau',
-      age: 31,
+const USER_MAIN_DATA = {
+  data: [
+    {
+      id: 12,
+      userInfos: {
+        firstName: 'MockedKarl',
+        lastName: 'MockedDovineau',
+        age: 31,
+      },
+      todayScore: 0.12,
+      keyData: {
+        calorieCount: 1930,
+        proteinCount: 155,
+        carbohydrateCount: 290,
+        lipidCount: 50,
+      },
     },
-    todayScore: 0.12,
-    keyData: {
-      calorieCount: 1930,
-      proteinCount: 155,
-      carbohydrateCount: 290,
-      lipidCount: 50,
+    {
+      id: 18,
+      userInfos: {
+        firstName: 'MockedCecilia',
+        lastName: 'MockedRatorez',
+        age: 34,
+      },
+      score: 0.3,
+      keyData: {
+        calorieCount: 2500,
+        proteinCount: 90,
+        carbohydrateCount: 150,
+        lipidCount: 120,
+      },
     },
-  },
-  {
-    id: 18,
-    userInfos: {
-      firstName: 'MockedCecilia',
-      lastName: 'MockedRatorez',
-      age: 34,
-    },
-    score: 0.3,
-    keyData: {
-      calorieCount: 2500,
-      proteinCount: 90,
-      carbohydrateCount: 150,
-      lipidCount: 120,
-    },
-  },
-];
+  ],
+};
 
 const USER_ACTIVITY = [
   {

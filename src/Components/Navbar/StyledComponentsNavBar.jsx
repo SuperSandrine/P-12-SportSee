@@ -10,6 +10,7 @@ export const StyledNav = styled.nav`
   height: 8.89vh;
   width: 100%;
   position: relative;
+  z-index: 2;
 `;
 export const StyledLink = styled(Link)`
   color: white;
@@ -22,7 +23,7 @@ export const StyledLink = styled(Link)`
 `;
 export const StyledVerticalUl = styled.ul`
   width: 8.13vw;
-  height: calc(100vh - 8.89vh);
+  height: calc(100vh - 8vh);
   display: flex;
   display: flex;
   flex-direction: column;
@@ -30,6 +31,8 @@ export const StyledVerticalUl = styled.ul`
   justify-content: space-evenly;
   align-items: center;
   position: absolute;
+  top: 8vh;
+  z-index: 1;
   left: 0;
   li {
     ul {

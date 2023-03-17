@@ -23,7 +23,6 @@ const CustomTooltipBarchart = ({ active, payload, label }) => {
           fontSize: '1.05vh',
           lineHeight: '2.34vh',
           textAlign: 'center',
-          outline: 'none',
         }}
       >
         <p>{`${payload[0].value}kg`}</p>

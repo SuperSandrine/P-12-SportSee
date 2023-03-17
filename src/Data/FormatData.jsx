@@ -36,7 +36,7 @@ class FormatData extends React.Component {
     if (!id) {
       return this.state.mainData.data.userInfos.firstName;
     } else {
-      const filteredData = this.state.mainData.find(
+      const filteredData = this.state.mainData.data.find(
         (element) => element.id == id
       );
       return filteredData.userInfos.firstName;
@@ -103,7 +103,7 @@ class FormatData extends React.Component {
     if (!id) {
       scoreData = this.state.mainData.data;
     } else {
-      scoreData = this.state.mainData.find((element) => element.id == id);
+      scoreData = this.state.mainData.data.find((element) => element.id == id);
     }
     const news = !scoreData.todayScore ? scoreData.score : scoreData.todayScore;
     return news * 100;
@@ -119,7 +119,7 @@ class FormatData extends React.Component {
     if (!id) {
       arrangedMainData = this.state.mainData.data.keyData;
     } else {
-      const filteredData = this.state.mainData.filter(
+      const filteredData = this.state.mainData.data.filter(
         (element) => element.id == id
       );
       arrangedMainData = filteredData[0].keyData;
