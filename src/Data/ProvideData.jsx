@@ -59,7 +59,10 @@ const ProvideData = ({ isMocked }, id) => {
       //   dietCountData: undefined,
       // };
     } else if (error) {
-      throw new Error('il y a un problème avec la requete API');
+      throw new Error(
+        'the problem might be from "ProvideData" or a path',
+        error
+      );
     } else {
       const firstName = format.getFirstNameFromData();
       const dailyActivitiesData = format.getDataForBarcharts();

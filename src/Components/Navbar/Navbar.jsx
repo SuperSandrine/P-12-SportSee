@@ -12,12 +12,20 @@ import yogi from './../../assets/Groupyogi.svg';
 import ride from './../../assets/Vectorride.svg';
 import swim from './../../assets/Vectorswim.svg';
 import work from './../../assets/Vectorwork.svg';
+import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 /**
  * Component creates vertical and horizontal Navbar.
  * @returns {JSX.Element}
  */
 const Navbar = () => {
+  const { id } = useParams();
+  const { pathname } = useLocation();
+
+  const profilLink = pathname.startsWith('/profilemocked')
+    ? `/profilemocked/${id}`
+    : `/profile/${id}`;
   return (
     <header>
       <StyledNav>
@@ -25,7 +33,7 @@ const Navbar = () => {
           <img src={logo} alt="logo de sportsee" />
         </StyledLink>
         <StyledLink to="/">Accueil</StyledLink>
-        <StyledLink to="/profile/:id">Profil</StyledLink>
+        <StyledLink to={profilLink}>Profil</StyledLink>
         <StyledLink to="/workinprogress">Réglages</StyledLink>
         <StyledLink to="/workinprogress">Communauté</StyledLink>
       </StyledNav>
